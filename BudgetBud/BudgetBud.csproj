@@ -99,8 +99,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backend\Db\DbConnection.cs" />
+    <Compile Include="Backend\Models\BudgetModel.cs" />
     <Compile Include="Backend\UserDataAccess.cs" />
     <Compile Include="Backend\UserContext.cs" />
+    <Compile Include="Components\BudgetInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\BudgetInput.Designer.cs">
+      <DependentUpon>BudgetInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +164,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\BudgetInput.resx">
+      <DependentUpon>BudgetInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,10 +218,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Backend\Models\" />
-    <Folder Include="Components\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\BudgetBud Logo.png" />
   </ItemGroup>
@@ -238,6 +254,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peso %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
