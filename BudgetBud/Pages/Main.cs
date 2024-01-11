@@ -16,7 +16,7 @@ namespace BudgetBud.Pages
 {
     public partial class Main : Form
     {
-        #region Navbar Prerequisite
+        #region Round Edge Imports
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -36,9 +36,11 @@ namespace BudgetBud.Pages
         {
             InitializeComponent();
 
+            // Round edge
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+
             #region Navbar Stuff
 
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
             PnlNav.Height = homeBtn.Height;
             PnlNav.Top = homeBtn.Top;
             PnlNav.Left = homeBtn.Left;
@@ -165,6 +167,9 @@ namespace BudgetBud.Pages
 
             UpdateNavLine(homeBtn.Height, homeBtn.Top, homeBtn.Left);
             homeBtn.BackColor = Color.FromArgb(46, 51, 73);
+
+            Home homePage = new Home();
+            ChangeMenu(homePage);
         }
 
         private void budgetBtn_Click(object sender, EventArgs e)
@@ -195,8 +200,8 @@ namespace BudgetBud.Pages
             UpdateNavLine(categoriesBtn.Height, categoriesBtn.Top, categoriesBtn.Left);
             categoriesBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            Categories budgetPage = new Categories();
-            ChangeMenu(budgetPage);
+            Categories categoriesPage = new Categories();
+            ChangeMenu(categoriesPage);
         }
 
         private void expenseBtn_Click(object sender, EventArgs e)
