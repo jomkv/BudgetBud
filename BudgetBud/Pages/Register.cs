@@ -1,5 +1,4 @@
 ﻿using BudgetBud.Backend;
-using BudgetBud.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BudgetBud
 {
-    public partial class Login : Form
+    public partial class Register : Form
     {
         UserDataAccess userDataAccess = new UserDataAccess();
 
@@ -33,22 +32,12 @@ namespace BudgetBud
 
         #endregion
 
-        public Login()
+        public Register()
         {
             InitializeComponent();
 
             // Round edges
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
-        }
-
-        public Login(string errorMessage)
-        {
-            InitializeComponent();
-
-            // Round edges
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
-
-            errorText.Text = errorMessage;
         }
 
         #region Control Bar
@@ -85,46 +74,82 @@ namespace BudgetBud
 
         #endregion
 
-        private void signupText_Click(object sender, EventArgs e)
+        private void loginText_Click(object sender, EventArgs e)
         {
             this.Hide();
 
-            Register registerPage = new Register();
-            registerPage.Show();
+            Login loginPage = new Login();
+            loginPage.Show();
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private void redirectToLogin()
         {
+            Login loginPage = new Login();
+
+            this.Hide();
+            loginPage.Show();
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            string fullName = fullnameText.Text;
             string username = usernameText.Text;
             string password = passwordText.Text;
+            string confirmPass = confirmText.Text;
 
             #region Input Validations
 
-            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+            if (
+                String.IsNullOrEmpty(fullName) ||
+                String.IsNullOrEmpty(username) ||
+                String.IsNullOrEmpty(password) ||
+                String.IsNullOrEmpty(confirmPass)
+               )
             {
                 errorText.Text = "Incomplete Input";
                 return;
             }
 
+            if (password != confirmPass)
+            {
+                errorText.Text = "Passwords do not match";
+                return;
+            }
+
+            if (!(password.Length >= 8) || !(password.Length <= 20))
+            {
+                errorText.Text = "Password must be 8-20 characters";
+                return;
+            }
+
+            if (!(username.Length >= 4) || !(username.Length <= 20))
+            {
+                errorText.Text = "Username must be 4-20 characters";
+                return;
+            }
+
             #endregion
 
-            loginBtn.Enabled = false;
+            registerBtn.Enabled = false;
 
-            if (userDataAccess.GetLoginAuthentication(username, password))
+            bool isSuccess = userDataAccess.Register(fullName, username, password);
+
+            if (isSuccess)
             {
-                Main mainPage = new Main();
-
-                this.Hide();
-                mainPage.Show();
+                redirectToLogin();
             }
             else
             {
-                usernameText.Text = "";
-                passwordText.Text = "";
-                errorText.Text = "Invalid Username and/or Password";
+                errorText.Text = "Error signing up";
             }
 
-            loginBtn.Enabled = true;
+            registerBtn.Enabled = true;
+        }
+
+        // Redirect user to login form
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            redirectToLogin();
         }
     }
 }
