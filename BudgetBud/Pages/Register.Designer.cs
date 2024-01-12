@@ -183,7 +183,7 @@
             this.registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerBtn.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registerBtn.ForeColor = System.Drawing.Color.White;
-            this.registerBtn.Location = new System.Drawing.Point(281, 443);
+            this.registerBtn.Location = new System.Drawing.Point(281, 457);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(208, 49);
             this.registerBtn.TabIndex = 6;
@@ -196,7 +196,7 @@
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.Controls.Add(this.loginText);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(281, 503);
+            this.panel2.Location = new System.Drawing.Point(281, 532);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(208, 22);
             this.panel2.TabIndex = 7;
@@ -237,7 +237,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(281, 190);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(281, 209);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -334,7 +334,7 @@
             this.errorText.AutoSize = true;
             this.errorText.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorText.ForeColor = System.Drawing.Color.OrangeRed;
-            this.errorText.Location = new System.Drawing.Point(278, 423);
+            this.errorText.Location = new System.Drawing.Point(278, 437);
             this.errorText.Margin = new System.Windows.Forms.Padding(0);
             this.errorText.Name = "errorText";
             this.errorText.Size = new System.Drawing.Size(0, 17);
@@ -345,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(783, 551);
+            this.ClientSize = new System.Drawing.Size(783, 581);
             this.ControlBox = false;
             this.Controls.Add(this.errorText);
             this.Controls.Add(this.tableLayoutPanel1);

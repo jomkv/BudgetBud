@@ -12,6 +12,7 @@ namespace BudgetBud.Backend.Models
     public class BudgetModel : DbConnection
     {
         #region Category Custom Class
+
         public class Category<T1, T2, T3>
         {
             public T1 Id { get; private set; }
@@ -25,6 +26,7 @@ namespace BudgetBud.Backend.Models
                 this.BudgetPercent = percent;
             }
         }
+
         #endregion
 
 

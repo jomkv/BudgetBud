@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Backend\Db\DbConnection.cs" />
     <Compile Include="Backend\Models\BudgetModel.cs" />
+    <Compile Include="Backend\Models\ExpenseModel.cs" />
     <Compile Include="Backend\UserDataAccess.cs" />
     <Compile Include="Backend\UserContext.cs" />
     <Compile Include="Components\BudgetInput.cs">
@@ -218,7 +219,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\note-taking.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BudgetBud Logo.png" />
   </ItemGroup>

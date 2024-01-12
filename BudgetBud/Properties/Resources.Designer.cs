@@ -183,6 +183,16 @@ namespace BudgetBud.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap note_taking {
+            get {
+                object obj = ResourceManager.GetObject("note-taking", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap peso {
             get {
                 object obj = ResourceManager.GetObject("peso", resourceCulture);
