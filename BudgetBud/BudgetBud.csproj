@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Backend\Db\DbConnection.cs" />
     <Compile Include="Backend\Models\BudgetModel.cs" />
+    <Compile Include="Backend\Models\CategoriesModel.cs" />
     <Compile Include="Backend\Models\ExpenseModel.cs" />
     <Compile Include="Backend\UserDataAccess.cs" />
     <Compile Include="Backend\UserContext.cs" />
@@ -108,6 +109,12 @@
     </Compile>
     <Compile Include="Components\BudgetInput.Designer.cs">
       <DependentUpon>BudgetInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomizeCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CustomizeCategory.Designer.cs">
+      <DependentUpon>CustomizeCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.cs">
       <SubType>Form</SubType>
@@ -167,6 +174,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Components\BudgetInput.resx">
       <DependentUpon>BudgetInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomizeCategory.resx">
+      <DependentUpon>CustomizeCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -272,6 +282,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\filter-filled-tool-symbol %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-bin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
