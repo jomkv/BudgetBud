@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nameText = new System.Windows.Forms.Label();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
+            this.nameText = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,22 +50,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 73);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(444, 90);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // nameText
-            // 
-            this.nameText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nameText.AutoSize = true;
-            this.nameText.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nameText.Location = new System.Drawing.Point(0, 22);
-            this.nameText.Margin = new System.Windows.Forms.Padding(0);
-            this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(160, 28);
-            this.nameText.TabIndex = 4;
-            this.nameText.Text = "Category Name";
-            this.nameText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // deleteBtn
             // 
@@ -76,12 +62,13 @@
             this.deleteBtn.FlatAppearance.BorderSize = 0;
             this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteBtn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.deleteBtn.Location = new System.Drawing.Point(290, 19);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteBtn.Location = new System.Drawing.Point(386, 23);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(35, 35);
+            this.deleteBtn.Size = new System.Drawing.Size(47, 43);
             this.deleteBtn.TabIndex = 6;
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // editBtn
             // 
@@ -92,21 +79,37 @@
             this.editBtn.FlatAppearance.BorderSize = 0;
             this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editBtn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.editBtn.Location = new System.Drawing.Point(240, 19);
-            this.editBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.editBtn.Location = new System.Drawing.Point(319, 23);
+            this.editBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(35, 35);
+            this.editBtn.Size = new System.Drawing.Size(47, 43);
             this.editBtn.TabIndex = 5;
             this.editBtn.UseVisualStyleBackColor = false;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
+            // nameText
+            // 
+            this.nameText.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nameText.AutoSize = true;
+            this.nameText.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameText.ForeColor = System.Drawing.Color.Gainsboro;
+            this.nameText.Location = new System.Drawing.Point(0, 27);
+            this.nameText.Margin = new System.Windows.Forms.Padding(0);
+            this.nameText.Name = "nameText";
+            this.nameText.Size = new System.Drawing.Size(199, 35);
+            this.nameText.TabIndex = 4;
+            this.nameText.Text = "Category Name";
+            this.nameText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CustomizeCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomizeCategory";
-            this.Size = new System.Drawing.Size(333, 73);
+            this.Size = new System.Drawing.Size(444, 90);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

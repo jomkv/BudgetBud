@@ -16,7 +16,9 @@ namespace BudgetBud.Backend.Models
         public CategoriesModel() { }
 
         public List<KeyValuePair<int, string>> categories {  get; private set; }
-        
+
+
+        #region Get Data from Database
         public void GetData()
         {
             FetchCategories();
@@ -60,5 +62,64 @@ namespace BudgetBud.Backend.Models
             }
             
         }
+
+        #endregion
+
+        #region Actions
+
+        public void DeleteCategory(int id)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Delete expenses that uses this category
+                            string expensesQuery = $@"DELETE FROM `expensestbl`
+                                                      WHERE
+                                                      `categoryId` = '{id}';";
+
+                            using (var command = new MySqlCommand(expensesQuery, connection))
+                            {
+                                command.ExecuteNonQuery();
+                            }
+
+                            // Delete the category itself
+                            string categoryQuery = $@"DELETE FROM `categoriestbl`
+                                                      WHERE
+                                                      `categoryId` = '{id}';";
+
+                            using (var command = new MySqlCommand(categoryQuery, connection))
+                            {
+                                command.ExecuteNonQuery();
+                            }
+
+                            // If all goes well, save / commit changes to database
+                            transaction.Commit();
+                        }
+                        catch (Exception e)
+                        {
+                            // If error occurs, do not save / commit changes to database
+                            transaction.Rollback();
+                            Debug.WriteLine($"Transaction error: {e.Message}");
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+            
+        }
+
+        #endregion
     }
 }
