@@ -102,6 +102,7 @@
     <Compile Include="Backend\Models\BudgetModel.cs" />
     <Compile Include="Backend\Models\CategoriesModel.cs" />
     <Compile Include="Backend\Models\ExpenseModel.cs" />
+    <Compile Include="Backend\Models\HomeModel.cs" />
     <Compile Include="Backend\UserDataAccess.cs" />
     <Compile Include="Backend\UserContext.cs" />
     <Compile Include="Components\BudgetInput.cs">
@@ -115,6 +116,12 @@
     </Compile>
     <Compile Include="Components\CategoryEditModal.Designer.cs">
       <DependentUpon>CategoryEditModal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CategoryProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\CategoryProgressBar.Designer.cs">
+      <DependentUpon>CategoryProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\CreateCategoryModal.cs">
       <SubType>Form</SubType>
@@ -189,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryEditModal.resx">
       <DependentUpon>CategoryEditModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CategoryProgressBar.resx">
+      <DependentUpon>CategoryProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CreateCategoryModal.resx">
       <DependentUpon>CreateCategoryModal.cs</DependentUpon>
@@ -318,6 +328,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trash-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

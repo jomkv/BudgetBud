@@ -50,6 +50,12 @@ namespace BudgetBud.Pages
             this.Resize += Main_Resize;
 
             #endregion
+
+            if (CheckSessionValidity())
+            {
+                Home homePage = new Home();
+                ChangeMenu(homePage);
+            }
         }
 
         #region Control Bar
