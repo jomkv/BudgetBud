@@ -25,6 +25,10 @@ namespace BudgetBud.Pages.Menus
             // Initialize some form inputs
             categoryDropdown.SelectedIndex = 0;
             amountText.Text = "0";
+
+            // limit date time picker to current month only
+            dateTimePicker.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dateTimePicker.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
         }
 
         #region Helper Functions
