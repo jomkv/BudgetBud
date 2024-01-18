@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.addExpenseButton = new System.Windows.Forms.Button();
+            this.errorText = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.amountText = new System.Windows.Forms.TextBox();
@@ -46,24 +49,21 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.categoryDropdown = new System.Windows.Forms.ComboBox();
-            this.errorText = new System.Windows.Forms.Label();
-            this.addExpenseButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
@@ -86,14 +86,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(919, 605);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 105);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 24);
-            this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
@@ -126,6 +118,51 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(439, 417);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.addExpenseButton, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.errorText, 0, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(93, 352);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(252, 65);
+            this.tableLayoutPanel8.TabIndex = 5;
+            // 
+            // addExpenseButton
+            // 
+            this.addExpenseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.addExpenseButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addExpenseButton.FlatAppearance.BorderSize = 0;
+            this.addExpenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addExpenseButton.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
+            this.addExpenseButton.ForeColor = System.Drawing.Color.White;
+            this.addExpenseButton.Location = new System.Drawing.Point(0, 18);
+            this.addExpenseButton.Margin = new System.Windows.Forms.Padding(0);
+            this.addExpenseButton.Name = "addExpenseButton";
+            this.addExpenseButton.Size = new System.Drawing.Size(252, 47);
+            this.addExpenseButton.TabIndex = 13;
+            this.addExpenseButton.Text = "Submit";
+            this.addExpenseButton.UseVisualStyleBackColor = false;
+            this.addExpenseButton.Click += new System.EventHandler(this.addExpenseButton_Click);
+            // 
+            // errorText
+            // 
+            this.errorText.AutoSize = true;
+            this.errorText.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorText.ForeColor = System.Drawing.Color.OrangeRed;
+            this.errorText.Location = new System.Drawing.Point(0, 0);
+            this.errorText.Margin = new System.Windows.Forms.Padding(0);
+            this.errorText.Name = "errorText";
+            this.errorText.Size = new System.Drawing.Size(0, 17);
+            this.errorText.TabIndex = 12;
+            this.errorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -155,6 +192,15 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Date";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dateTimePicker.Location = new System.Drawing.Point(0, 32);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(252, 20);
+            this.dateTimePicker.TabIndex = 4;
             // 
             // tableLayoutPanel6
             // 
@@ -298,9 +344,9 @@
             this.label2.Location = new System.Drawing.Point(0, 4);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 28);
+            this.label2.Size = new System.Drawing.Size(98, 28);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Username";
+            this.label2.Text = "Category";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // categoryDropdown
@@ -313,50 +359,13 @@
             this.categoryDropdown.Size = new System.Drawing.Size(252, 21);
             this.categoryDropdown.TabIndex = 4;
             // 
-            // errorText
+            // panel1
             // 
-            this.errorText.AutoSize = true;
-            this.errorText.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorText.ForeColor = System.Drawing.Color.OrangeRed;
-            this.errorText.Location = new System.Drawing.Point(0, 0);
-            this.errorText.Margin = new System.Windows.Forms.Padding(0);
-            this.errorText.Name = "errorText";
-            this.errorText.Size = new System.Drawing.Size(0, 17);
-            this.errorText.TabIndex = 12;
-            this.errorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // addExpenseButton
-            // 
-            this.addExpenseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.addExpenseButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addExpenseButton.FlatAppearance.BorderSize = 0;
-            this.addExpenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addExpenseButton.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
-            this.addExpenseButton.ForeColor = System.Drawing.Color.White;
-            this.addExpenseButton.Location = new System.Drawing.Point(0, 18);
-            this.addExpenseButton.Margin = new System.Windows.Forms.Padding(0);
-            this.addExpenseButton.Name = "addExpenseButton";
-            this.addExpenseButton.Size = new System.Drawing.Size(252, 47);
-            this.addExpenseButton.TabIndex = 13;
-            this.addExpenseButton.Text = "Submit";
-            this.addExpenseButton.UseVisualStyleBackColor = false;
-            this.addExpenseButton.Click += new System.EventHandler(this.addExpenseButton_Click);
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel8.ColumnCount = 1;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Controls.Add(this.addExpenseButton, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.errorText, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(93, 352);
-            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(252, 65);
-            this.tableLayoutPanel8.TabIndex = 5;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 105);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(913, 24);
+            this.panel1.TabIndex = 4;
             // 
             // tableLayoutPanel9
             // 
@@ -400,19 +409,6 @@
             this.tableLayoutPanel10.Size = new System.Drawing.Size(319, 53);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(9, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 53);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Add an Expense";
-            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -426,14 +422,18 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Expense";
             // 
-            // dateTimePicker
+            // label1
             // 
-            this.dateTimePicker.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dateTimePicker.Location = new System.Drawing.Point(0, 32);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(252, 20);
-            this.dateTimePicker.TabIndex = 4;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label1.Location = new System.Drawing.Point(9, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 53);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Add an Expense";
             // 
             // Expense
             // 
@@ -446,6 +446,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -456,8 +458,6 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
