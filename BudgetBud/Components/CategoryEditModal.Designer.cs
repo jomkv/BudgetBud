@@ -30,7 +30,7 @@
         {
             this.categoryText = new System.Windows.Forms.Label();
             this.nameText = new System.Windows.Forms.TextBox();
-            this.loginBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -40,34 +40,37 @@
             this.categoryText.AutoSize = true;
             this.categoryText.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.categoryText.Location = new System.Drawing.Point(112, 34);
+            this.categoryText.Location = new System.Drawing.Point(149, 42);
             this.categoryText.Margin = new System.Windows.Forms.Padding(0);
             this.categoryText.Name = "categoryText";
-            this.categoryText.Size = new System.Drawing.Size(219, 37);
+            this.categoryText.Size = new System.Drawing.Size(268, 46);
             this.categoryText.TabIndex = 5;
             this.categoryText.Text = "Category Name";
             // 
             // nameText
             // 
             this.nameText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nameText.Location = new System.Drawing.Point(82, 83);
+            this.nameText.Location = new System.Drawing.Point(109, 102);
+            this.nameText.Margin = new System.Windows.Forms.Padding(4);
             this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(280, 20);
+            this.nameText.Size = new System.Drawing.Size(372, 22);
             this.nameText.TabIndex = 6;
             // 
-            // loginBtn
+            // saveBtn
             // 
-            this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.loginBtn.FlatAppearance.BorderSize = 0;
-            this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginBtn.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
-            this.loginBtn.ForeColor = System.Drawing.Color.White;
-            this.loginBtn.Location = new System.Drawing.Point(123, 133);
-            this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(208, 49);
-            this.loginBtn.TabIndex = 7;
-            this.loginBtn.Text = "Save";
-            this.loginBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.saveBtn.FlatAppearance.BorderSize = 0;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
+            this.saveBtn.ForeColor = System.Drawing.Color.White;
+            this.saveBtn.Location = new System.Drawing.Point(164, 164);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(277, 60);
+            this.saveBtn.TabIndex = 7;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // button1
             // 
@@ -76,9 +79,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(123, 200);
+            this.button1.Location = new System.Drawing.Point(164, 246);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 49);
+            this.button1.Size = new System.Drawing.Size(277, 60);
             this.button1.TabIndex = 8;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = false;
@@ -86,15 +90,16 @@
             // 
             // CategoryEditModal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(464, 279);
+            this.ClientSize = new System.Drawing.Size(619, 343);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.loginBtn);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.nameText);
             this.Controls.Add(this.categoryText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CategoryEditModal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CategoryEditModal";
@@ -108,7 +113,7 @@
 
         private System.Windows.Forms.Label categoryText;
         private System.Windows.Forms.TextBox nameText;
-        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button button1;
     }
 }

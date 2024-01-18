@@ -43,7 +43,7 @@ namespace BudgetBud.Components
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            using (CategoryEditModal modal = new CategoryEditModal(this.name))
+            using (CategoryEditModal modal = new CategoryEditModal(this.name, this.id))
             {
                 modal.ShowDialog(this);
             }

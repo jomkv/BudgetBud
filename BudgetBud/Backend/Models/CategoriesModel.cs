@@ -120,6 +120,32 @@ namespace BudgetBud.Backend.Models
             
         }
 
+        public void EditCategory(int id, string newName)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string categoryQuery = $@"UPDATE `categoriestbl`
+                                              SET `category_name` = '{newName}'
+                                              WHERE `categoryId` = '{id}';";
+
+                    using (var command = new MySqlCommand(categoryQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }   
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
         #endregion
     }
 }
