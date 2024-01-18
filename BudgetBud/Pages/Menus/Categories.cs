@@ -40,5 +40,13 @@ namespace BudgetBud.Pages.Menus
                 }
             }
         }
+
+        private void createCategoryBtn_Click(object sender, EventArgs e)
+        {
+            using (CreateCategoryModal modal = new CreateCategoryModal())
+            {
+                modal.ShowDialog(this);
+            }
+        }
     }
 }

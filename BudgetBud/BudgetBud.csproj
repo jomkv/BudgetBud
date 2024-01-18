@@ -116,6 +116,12 @@
     <Compile Include="Components\CategoryEditModal.Designer.cs">
       <DependentUpon>CategoryEditModal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CreateCategoryModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\CreateCategoryModal.Designer.cs">
+      <DependentUpon>CreateCategoryModal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CustomizeCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryEditModal.resx">
       <DependentUpon>CategoryEditModal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CreateCategoryModal.resx">
+      <DependentUpon>CreateCategoryModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomizeCategory.resx">
       <DependentUpon>CustomizeCategory.cs</DependentUpon>

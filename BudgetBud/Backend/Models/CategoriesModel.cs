@@ -146,6 +146,31 @@ namespace BudgetBud.Backend.Models
             }
         }
 
+        public void CreateCategory(string name)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string categoryQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `userId`) 
+                                              VALUES ('{name}', 0, '{UserContext.SessionUserId}');";
+
+                    using (var command = new MySqlCommand(categoryQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
         #endregion
     }
 }

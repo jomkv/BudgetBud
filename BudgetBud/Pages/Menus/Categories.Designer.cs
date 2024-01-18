@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.createCategoryBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.categoriesPanel = new System.Windows.Forms.Panel();
+            this.createCategoryBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,24 +66,6 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Customize Categories";
             // 
-            // createCategoryBtn
-            // 
-            this.createCategoryBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.createCategoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.createCategoryBtn.FlatAppearance.BorderSize = 0;
-            this.createCategoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createCategoryBtn.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
-            this.createCategoryBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.createCategoryBtn.Image = global::BudgetBud.Properties.Resources.plus__3_;
-            this.createCategoryBtn.Location = new System.Drawing.Point(0, 344);
-            this.createCategoryBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.createCategoryBtn.Name = "createCategoryBtn";
-            this.createCategoryBtn.Size = new System.Drawing.Size(333, 73);
-            this.createCategoryBtn.TabIndex = 14;
-            this.createCategoryBtn.Text = "Create New Category";
-            this.createCategoryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.createCategoryBtn.UseVisualStyleBackColor = false;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -105,11 +87,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.categoriesPanel.AutoScroll = true;
-            this.categoriesPanel.Location = new System.Drawing.Point(10, 10);
-            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(10);
+            this.categoriesPanel.Location = new System.Drawing.Point(0, 20);
+            this.categoriesPanel.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.categoriesPanel.Name = "categoriesPanel";
-            this.categoriesPanel.Size = new System.Drawing.Size(313, 324);
+            this.categoriesPanel.Size = new System.Drawing.Size(333, 324);
             this.categoriesPanel.TabIndex = 15;
+            // 
+            // createCategoryBtn
+            // 
+            this.createCategoryBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.createCategoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.createCategoryBtn.FlatAppearance.BorderSize = 0;
+            this.createCategoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createCategoryBtn.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
+            this.createCategoryBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.createCategoryBtn.Image = global::BudgetBud.Properties.Resources.plus__3_;
+            this.createCategoryBtn.Location = new System.Drawing.Point(10, 344);
+            this.createCategoryBtn.Margin = new System.Windows.Forms.Padding(10, 0, 10, 10);
+            this.createCategoryBtn.Name = "createCategoryBtn";
+            this.createCategoryBtn.Size = new System.Drawing.Size(313, 63);
+            this.createCategoryBtn.TabIndex = 14;
+            this.createCategoryBtn.Text = "Create New Category";
+            this.createCategoryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.createCategoryBtn.UseVisualStyleBackColor = false;
+            this.createCategoryBtn.Click += new System.EventHandler(this.createCategoryBtn_Click);
             // 
             // Categories
             // 
