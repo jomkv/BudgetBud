@@ -126,9 +126,16 @@ namespace BudgetBud.Pages.Menus
                 }
             }
 
-            model.SaveBudget(categoryBudgets, budget);
-
-            Debug.WriteLine(total);
+            if(total > 100)
+            {
+                errorText.Text = "Total Percent must not exceed 100";
+            }
+            else
+            {
+                errorText.Text = "";
+                MessageBox.Show("Budget Saved");
+                model.SaveBudget(categoryBudgets, budget);
+            }
         }
         #endregion
     }

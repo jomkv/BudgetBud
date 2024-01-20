@@ -143,7 +143,7 @@ namespace BudgetBud.Backend.Models
 
                     if(categoryBudget == 0 && totalSpent > 0) // no budget but has spent
                     {
-                        percent = 100;
+                        percent = 101;
                     }
                     else if (totalSpent == 0 && categoryBudget > 0) // has budget but no spent
                     {
