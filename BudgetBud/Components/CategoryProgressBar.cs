@@ -16,5 +16,22 @@ namespace BudgetBud.Components
         {
             InitializeComponent();
         }
+
+        public CategoryProgressBar(string name, int percent)
+        {
+            InitializeComponent();
+
+            this.nameText.Text = name;
+
+            if(percent > 100)
+            {
+                this.progressBar.Value = 100;
+                this.label1.Visible = true;
+            }
+            else
+            {
+                this.progressBar.Value = percent;
+            }
+        }
     }
 }

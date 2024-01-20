@@ -39,6 +39,10 @@ namespace BudgetBud.Pages
             // Round edge
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
 
+            // Initialize Username and Status
+            this.usernameText.Text = UserContext.UserName;
+            this.statusText.Text = UserContext.Status;
+
             #region Navbar Stuff
 
             PnlNav.Height = homeBtn.Height;

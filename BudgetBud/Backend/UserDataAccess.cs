@@ -78,28 +78,40 @@ namespace BudgetBud.Backend
                 {
                     connection.Open();
 
-                    string loginQuery = $@"SELECT `id` 
+                    string loginQuery = $@"SELECT `id`, `username`, `status`
                                            FROM `userstbl`
                                            WHERE `username` = '{username}'
                                            AND `password` = '{password}'";
+
                     using (var command = new MySqlCommand(loginQuery, connection))
                     {
-                        int userId = Convert.ToInt32(command.ExecuteScalar());
-
-                        // if valid user (successful login)
-                        if (userId != 0)
+                        using (var reader = command.ExecuteReader())
                         {
-                            output = true;
+                            // Check if any rows are returned
+                            if (reader.Read())
+                            {
+                                // Read values from the reader
+                                int userId = reader.GetInt32("id");
+                                string fetchedUsername = reader.GetString("username");
+                                string fetchedStatus = reader.GetString("status");
 
-                            // set current session id to userId
-                            UserContext.IsLoggedIn = true;
-                            UserContext.SessionUserId = userId;
+                                // if valid user (successful login)
+                                if (userId != 0)
+                                {
+                                    output = true;
+
+                                    // Set current session values
+                                    UserContext.IsLoggedIn = true;
+                                    UserContext.SessionUserId = userId;
+                                    UserContext.UserName = fetchedUsername;
+                                    UserContext.Status = fetchedStatus;
+                                }
+                            }
                         }
-
-                        connection.Close();
-
-                        return output;
                     }
+
+                    connection.Close();
+                    return output;
                 }
             }
             catch (Exception e)
