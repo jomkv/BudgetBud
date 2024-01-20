@@ -42,7 +42,7 @@ namespace BudgetBud.Pages.Menus
                 }
             }
 
-            if(model.categoryCount > 8)
+            if(model.categoryCount >= 8)
             {
                 createCategoryBtn.Visible = false;
             }
