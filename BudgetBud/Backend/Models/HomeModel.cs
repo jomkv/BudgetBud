@@ -24,6 +24,8 @@ namespace BudgetBud.Backend.Models
 
         #region Fetching data from Database
 
+        #region Monthly Budget
+
         public void FetchMonthlyBudget()
         {
             try
@@ -54,6 +56,10 @@ namespace BudgetBud.Backend.Models
                 Debug.WriteLine(e.Message);
             }
         }
+
+        #endregion
+
+        #region Total Spent and Available
 
         public void FetchTotalSpent()
         {
@@ -89,11 +95,19 @@ namespace BudgetBud.Backend.Models
             }
         }
 
+        #endregion
+
+        #region Expense Meters Per Category
+
         public void FetchExpenseMeter(int categoryId, string categoryName)
         {
+            #region Properties
+
             decimal totalSpent = 0;
             decimal categoryBudget = 0;
             int percent = 0;
+
+            #endregion
 
             try
             {
@@ -140,8 +154,9 @@ namespace BudgetBud.Backend.Models
 
                     #endregion
 
+                    #region Edge Case Conditions for Calculating Percent
 
-                    if(categoryBudget == 0 && totalSpent > 0) // no budget but has spent
+                    if (categoryBudget == 0 && totalSpent > 0) // no budget but has spent
                     {
                         percent = 101;
                     }
@@ -158,8 +173,9 @@ namespace BudgetBud.Backend.Models
                         percent = (int) Math.Round(totalSpent / categoryBudget * 100);
                     }
 
-                    expenseMeters.Add(new KeyValuePair<string, int>(categoryName, percent));
+                    #endregion
 
+                    expenseMeters.Add(new KeyValuePair<string, int>(categoryName, percent));
                     connection.Close();
                 }
             }
@@ -202,6 +218,8 @@ namespace BudgetBud.Backend.Models
                 Debug.WriteLine($"Error: {e.Message}");
             }
         }
+
+        #endregion
 
         public void GetData()
         {
