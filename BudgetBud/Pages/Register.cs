@@ -132,6 +132,13 @@ namespace BudgetBud
 
             registerBtn.Enabled = false;
 
+            if(userDataAccess.IsUserTaken(username))
+            {
+                errorText.Text = "Username already taken";
+                registerBtn.Enabled = true;
+                return;
+            }
+
             bool isSuccess = userDataAccess.Register(fullName, username, password);
 
             if (isSuccess)

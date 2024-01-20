@@ -15,6 +15,37 @@ namespace BudgetBud.Backend
 
         public UserDataAccess() { }
 
+        #region Username Taken
+
+        public bool IsUserTaken(string username)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string userQuery = $@"SELECT COUNT(*)
+                                          FROM `userstbl`
+                                          WHERE `username` = '{username}';";
+
+                    using (var command = new MySqlCommand(userQuery, connection)) 
+                    {
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+                return false;
+            }
+        }
+
+        #endregion
+
         #region Register
         // returns true if register successful, false if error
         public bool Register(string fullName, string username, string password)
