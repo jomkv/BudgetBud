@@ -15,14 +15,16 @@ namespace BudgetBud.Backend.Models
     {
         public CategoriesModel() { }
 
-        public List<KeyValuePair<int, string>> categories {  get; private set; }
+        #region Properties
 
+        public List<KeyValuePair<int, string>> categories {  get; private set; } = new List<KeyValuePair<int, string>>();
+        public int categoryCount { get; private set; } = 0;
+
+        #endregion
 
         #region Get Data from Database
-        public void GetData()
-        {
-            FetchCategories();
-        }
+
+        #region Categories Info
 
         public void FetchCategories()
         {
@@ -41,9 +43,6 @@ namespace BudgetBud.Backend.Models
                     {
                         MySqlDataReader reader = command.ExecuteReader();
 
-                        // list of categories
-                        categories = new List<KeyValuePair<int, string>>();
-
                         while (reader.Read())
                         {
                             int id = Convert.ToInt32(reader["categoryId"]);
@@ -60,7 +59,49 @@ namespace BudgetBud.Backend.Models
             {
                 Debug.WriteLine($"Error: {e.Message}");
             }
-            
+        }
+
+        #endregion
+
+        #region Category Count
+
+        public void FetchCategoryCount()
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string categoryQuery = $@"SELECT COUNT(*) 
+                                              FROM `categoriestbl`
+                                              WHERE `userId` = {UserContext.SessionUserId};";
+
+                    using (var command = new MySqlCommand(categoryQuery, connection))
+                    {
+                        var result = command.ExecuteScalar();
+
+                        if (result != DBNull.Value && result != null) 
+                        {
+                            this.categoryCount = Convert.ToInt32(result);
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        #endregion
+
+        public void GetData()
+        {
+            FetchCategories();
+            FetchCategoryCount();
         }
 
         #endregion

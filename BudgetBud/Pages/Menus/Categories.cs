@@ -26,6 +26,8 @@ namespace BudgetBud.Pages.Menus
         {
             model.GetData();
 
+            bool allowDelete = (model.categoryCount <= 3) ? false : true;
+
             if(model.categories != null) 
             {
                 foreach(KeyValuePair<int, string> category in model.categories)
@@ -33,11 +35,16 @@ namespace BudgetBud.Pages.Menus
                     int id = category.Key;
                     string name = category.Value;
 
-                    CustomizeCategory customizeCategory = new CustomizeCategory(id, name);
+                    CustomizeCategory customizeCategory = new CustomizeCategory(id, name, allowDelete);
                     customizeCategory.Dock = DockStyle.Top;
 
                     categoriesPanel.Controls.Add(customizeCategory);
                 }
+            }
+
+            if(model.categoryCount > 8)
+            {
+                createCategoryBtn.Visible = false;
             }
         }
 
