@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Backend.Models;
+using BudgetBud.Components;
 
 namespace BudgetBud.Pages.Menus
 {
     public partial class History : UserControl
     {
         HistoryModel model = new HistoryModel();
+        private Main main { get; set; }
 
         public History()
         {
@@ -22,11 +24,25 @@ namespace BudgetBud.Pages.Menus
             GetData();
         }
 
+        public History(Main main)
+        {
+            InitializeComponent();
+            GetData();
+            this.main = main;
+        }
+
         public void GetData()
         {
             model.GetData();
 
             #region Initialize history table
+
+            if(model.expenseTable.Rows.Count == 0)
+            {
+                filterBtn.Enabled = false;
+                searchBtn.Enabled = false;
+                return;
+            }
 
             dataGridView1.DataSource = model.expenseTable;
 
@@ -68,20 +84,31 @@ namespace BudgetBud.Pages.Menus
                         return;
                     }
 
+                    #region Category Properties
                     int expenseId = Convert.ToInt32(senderGrid.Rows[e.RowIndex].Cells["ID"].Value);
+                    string title = senderGrid.Rows[e.RowIndex].Cells["Title"].Value.ToString();
+                    string desc = senderGrid.Rows[e.RowIndex].Cells["Description"].Value.ToString();
+                    decimal amount = Convert.ToDecimal(senderGrid.Rows[e.RowIndex].Cells["Amount"].Value);
+                    string date = senderGrid.Rows[e.RowIndex].Cells["Date"].Value.ToString();
+                    string category = senderGrid.Rows[e.RowIndex].Cells["Category"].Value.ToString();
+                    #endregion
 
                     // CHANGE index if possible
                     if (e.ColumnIndex == 0) // edit
                     {
-                        Debug.WriteLine($"Edit, ExpenseId: {expenseId}");
+                        using (HistoryEditExpense modal = new HistoryEditExpense(this.main, expenseId, category, title, desc, amount, date))
+                        {
+                            modal.ShowDialog();
+                        }
                     }
                     else if (e.ColumnIndex == 1) // delete
                     {
-                        DialogResult dr = MessageBox.Show("Are you sure you want to delete this category?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dr = MessageBox.Show("Are you sure you want to delete this expense?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if(dr == DialogResult.Yes)
                         {
                             model.DeleteExpense(expenseId);
+                            main.ChangeMenu(new History(this.main));
                         }
                     }
                 }

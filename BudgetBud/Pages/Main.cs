@@ -134,7 +134,7 @@ namespace BudgetBud.Pages
             logoutBtn.BackColor = Color.FromArgb(24, 30, 54);
         }
 
-        private void ChangeMenu(UserControl userControl)
+        public void ChangeMenu(UserControl userControl)
         {
             contentPanel.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
@@ -242,7 +242,7 @@ namespace BudgetBud.Pages
             UpdateNavLine(historyBtn.Height, historyBtn.Top, historyBtn.Left);
             historyBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            History historyPage = new History();
+            History historyPage = new History(this);
             ChangeMenu(historyPage);
         }
 

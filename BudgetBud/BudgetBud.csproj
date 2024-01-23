@@ -137,6 +137,12 @@
     <Compile Include="Components\CustomizeCategory.Designer.cs">
       <DependentUpon>CustomizeCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\HistoryEditExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\HistoryEditExpense.Designer.cs">
+      <DependentUpon>HistoryEditExpense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Menus\Analysis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CustomizeCategory.resx">
       <DependentUpon>CustomizeCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\HistoryEditExpense.resx">
+      <DependentUpon>HistoryEditExpense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Menus\Analysis.resx">
       <DependentUpon>Analysis.cs</DependentUpon>
@@ -333,6 +342,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrows1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
