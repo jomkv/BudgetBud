@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backend\Db\DbConnection.cs" />
+    <Compile Include="Backend\Models\HistoryModel.cs" />
     <Compile Include="Backend\Models\BudgetModel.cs" />
     <Compile Include="Backend\Models\CategoriesModel.cs" />
     <Compile Include="Backend\Models\HomeModel.cs" />
