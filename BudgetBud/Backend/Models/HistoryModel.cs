@@ -57,5 +57,34 @@ namespace BudgetBud.Backend.Models
         }
 
         #endregion
+
+        #region Actions
+
+        public void DeleteExpense (int expenseId)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string expenseQuery = $@"DELETE FROM `expensestbl`
+                                             WHERE `expenseid` = {expenseId};";
+
+                    using (var command = new MySqlCommand(expenseQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        #endregion
     }
 }

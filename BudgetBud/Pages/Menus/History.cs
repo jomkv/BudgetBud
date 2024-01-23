@@ -63,6 +63,10 @@ namespace BudgetBud.Pages.Menus
                 // Check which button is clicked
                 if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
+                    if(senderGrid.Rows[e.RowIndex].Cells["ID"].Value == DBNull.Value)
+                    {
+                        return;
+                    }
 
                     int expenseId = Convert.ToInt32(senderGrid.Rows[e.RowIndex].Cells["ID"].Value);
 
@@ -73,7 +77,12 @@ namespace BudgetBud.Pages.Menus
                     }
                     else if (e.ColumnIndex == 1) // delete
                     {
-                        Debug.WriteLine($"Delete, ExpenseId: {expenseId}");
+                        DialogResult dr = MessageBox.Show("Are you sure you want to delete this category?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if(dr == DialogResult.Yes)
+                        {
+                            model.DeleteExpense(expenseId);
+                        }
                     }
                 }
             }
