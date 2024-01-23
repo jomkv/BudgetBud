@@ -45,6 +45,7 @@ namespace BudgetBud.Backend.Models
                         if (result != DBNull.Value && result != null)
                         {
                             this.budget = Convert.ToDecimal(result);
+                            this.available = Convert.ToDecimal(result);
                         }
                     }
 
@@ -82,7 +83,7 @@ namespace BudgetBud.Backend.Models
                         if(result != DBNull.Value && result != null)
                         {
                             this.spent = Convert.ToDecimal(result);
-                            this.available = this.budget - this.spent;
+                            this.available -= this.spent;
                         }
                     }
 
