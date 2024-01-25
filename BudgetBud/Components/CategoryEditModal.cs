@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Pages;
+using BudgetBud.Pages.Menus;
 using BudgetBud.Backend.Models;
 
 namespace BudgetBud.Components
@@ -16,6 +17,7 @@ namespace BudgetBud.Components
     public partial class CategoryEditModal : Form
     {
         CategoriesModel model = new CategoriesModel();
+        private Main main { get; set; }
 
         private int categoryId { get; set; }
         public CategoryEditModal()
@@ -23,7 +25,7 @@ namespace BudgetBud.Components
             InitializeComponent();
         }
 
-        public CategoryEditModal(string name, int id)
+        public CategoryEditModal(Main main, string name, int id)
         {
             InitializeComponent();
             this.nameText.Text = name;
@@ -63,6 +65,7 @@ namespace BudgetBud.Components
 
             model.EditCategory(this.categoryId, this.nameText.Text);
             this.Close();
+            main.ChangeMenu(new Categories(this.main));
         }
 
         private void closeBtn_Click(Object sender, EventArgs e)

@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Backend.Models;
+using BudgetBud.Pages.Menus;
+using BudgetBud.Pages;
 
 namespace BudgetBud.Components
 {
     public partial class CustomizeCategory : UserControl
     {
         CategoriesModel model = new CategoriesModel();
+        public Main main { get; set; }
 
         #region Properties
 
@@ -29,9 +32,10 @@ namespace BudgetBud.Components
         }
 
         #region Custom Constructor
-        public CustomizeCategory(int id, string name, bool allowDelete)
+        public CustomizeCategory(Main main, int id, string name, bool allowDelete)
         {
             InitializeComponent();
+            this.main = main;
             this.nameText.Text = name;
             this.name = name;
             this.id = id;
@@ -53,14 +57,15 @@ namespace BudgetBud.Components
             if(dr == DialogResult.Yes)
             {
                 model.DeleteCategory(this.id);
+                main.ChangeMenu(new Categories(this.main));
             }
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            using (CategoryEditModal modal = new CategoryEditModal(this.name, this.id))
+            using (CategoryEditModal modal = new CategoryEditModal(this.main, this.name, this.id))
             {
-                modal.ShowDialog(this);
+                modal.ShowDialog();
             }
         }
         #endregion

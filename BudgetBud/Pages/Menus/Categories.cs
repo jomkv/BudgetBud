@@ -15,11 +15,19 @@ namespace BudgetBud.Pages.Menus
     public partial class Categories : UserControl
     {
         CategoriesModel model = new CategoriesModel();
+        private Main main {  get; set; }
 
         public Categories()
         {
             InitializeComponent();
             getData();
+        }
+
+        public Categories(Main main)
+        {
+            InitializeComponent();
+            getData();
+            this.main = main;
         }
 
         private void getData()
@@ -35,7 +43,7 @@ namespace BudgetBud.Pages.Menus
                     int id = category.Key;
                     string name = category.Value;
 
-                    CustomizeCategory customizeCategory = new CustomizeCategory(id, name, allowDelete);
+                    CustomizeCategory customizeCategory = new CustomizeCategory(this.main, id, name, allowDelete);
                     customizeCategory.Dock = DockStyle.Top;
 
                     categoriesPanel.Controls.Add(customizeCategory);
@@ -50,9 +58,9 @@ namespace BudgetBud.Pages.Menus
 
         private void createCategoryBtn_Click(object sender, EventArgs e)
         {
-            using (CreateCategoryModal modal = new CreateCategoryModal())
+            using (CreateCategoryModal modal = new CreateCategoryModal(this.main))
             {
-                modal.ShowDialog(this);
+                modal.ShowDialog();
             }
         }
     }

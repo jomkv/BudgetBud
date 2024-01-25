@@ -36,8 +36,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.statusText = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.usernameText = new System.Windows.Forms.Label();
+            this.statusText = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navBarContainer = new System.Windows.Forms.Panel();
             this.PnlNav = new System.Windows.Forms.Panel();
@@ -49,15 +50,14 @@
             this.budgetBtn = new System.Windows.Forms.Button();
             this.homeBtn = new System.Windows.Forms.Button();
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.navBarContainer.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -186,17 +186,20 @@
             this.panel2.Size = new System.Drawing.Size(172, 156);
             this.panel2.TabIndex = 0;
             // 
-            // statusText
+            // tableLayoutPanel4
             // 
-            this.statusText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.statusText.AutoSize = true;
-            this.statusText.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.statusText.Location = new System.Drawing.Point(65, 28);
-            this.statusText.Name = "statusText";
-            this.statusText.Size = new System.Drawing.Size(42, 15);
-            this.statusText.TabIndex = 2;
-            this.statusText.Text = "Status";
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.usernameText, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.statusText, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 96);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 51);
+            this.tableLayoutPanel4.TabIndex = 3;
             // 
             // usernameText
             // 
@@ -209,6 +212,18 @@
             this.usernameText.Size = new System.Drawing.Size(106, 28);
             this.usernameText.TabIndex = 1;
             this.usernameText.Text = "Username";
+            // 
+            // statusText
+            // 
+            this.statusText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.statusText.AutoSize = true;
+            this.statusText.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.statusText.Location = new System.Drawing.Point(65, 28);
+            this.statusText.Name = "statusText";
+            this.statusText.Size = new System.Drawing.Size(42, 15);
+            this.statusText.TabIndex = 2;
+            this.statusText.Text = "Status";
             // 
             // pictureBox1
             // 
@@ -382,21 +397,6 @@
             this.contentPanel.Size = new System.Drawing.Size(925, 611);
             this.contentPanel.TabIndex = 1;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.usernameText, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.statusText, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 96);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(172, 51);
-            this.tableLayoutPanel4.TabIndex = 3;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,10 +416,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.navBarContainer.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.navBarContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

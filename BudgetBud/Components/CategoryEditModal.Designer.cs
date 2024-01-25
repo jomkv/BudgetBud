@@ -45,8 +45,8 @@
             this.categoryText.AutoSize = true;
             this.categoryText.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.categoryText.Location = new System.Drawing.Point(94, 37);
-            this.categoryText.Margin = new System.Windows.Forms.Padding(0);
+            this.categoryText.Location = new System.Drawing.Point(84, 27);
+            this.categoryText.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.categoryText.Name = "categoryText";
             this.categoryText.Size = new System.Drawing.Size(276, 37);
             this.categoryText.TabIndex = 5;
@@ -55,7 +55,7 @@
             // nameText
             // 
             this.nameText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nameText.Location = new System.Drawing.Point(92, 77);
+            this.nameText.Location = new System.Drawing.Point(82, 77);
             this.nameText.Name = "nameText";
             this.nameText.Size = new System.Drawing.Size(280, 20);
             this.nameText.TabIndex = 6;
@@ -85,7 +85,7 @@
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.cancelBtn.ForeColor = System.Drawing.Color.White;
-            this.cancelBtn.Location = new System.Drawing.Point(128, 197);
+            this.cancelBtn.Location = new System.Drawing.Point(118, 197);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(208, 49);
             this.cancelBtn.TabIndex = 8;
@@ -95,6 +95,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.categoryText, 0, 0);
@@ -102,14 +103,14 @@
             this.tableLayoutPanel1.Controls.Add(this.cancelBtn, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 279);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(444, 259);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
             // panel1
@@ -117,7 +118,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.Controls.Add(this.errorText);
             this.panel1.Controls.Add(this.saveBtn);
-            this.panel1.Location = new System.Drawing.Point(78, 104);
+            this.panel1.Location = new System.Drawing.Point(68, 104);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(307, 87);
             this.panel1.TabIndex = 9;
@@ -138,11 +139,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(464, 279);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CategoryEditModal";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CategoryEditModal";
             this.Load += new System.EventHandler(this.CategoryEditModal_Load);

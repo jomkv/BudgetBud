@@ -143,8 +143,6 @@ namespace BudgetBud.Pages
 
         private bool CheckSessionValidity()
         {
-            return true;
-
             if (!UserContext.IsLoggedIn)
             {
                 Debug.WriteLine("Unauthorized access attempt: User not logged in.");
@@ -210,7 +208,7 @@ namespace BudgetBud.Pages
             UpdateNavLine(categoriesBtn.Height, categoriesBtn.Top, categoriesBtn.Left);
             categoriesBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            Categories categoriesPage = new Categories();
+            Categories categoriesPage = new Categories(this);
             ChangeMenu(categoriesPage);
         }
 

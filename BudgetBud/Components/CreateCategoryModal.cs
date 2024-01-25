@@ -8,16 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Backend.Models;
+using BudgetBud.Pages;
+using BudgetBud.Pages.Menus;
 
 namespace BudgetBud.Components
 {
     public partial class CreateCategoryModal : Form
     {
         CategoriesModel model = new CategoriesModel();
+        private Main main { get; set; }
 
         public CreateCategoryModal()
         {
             InitializeComponent();
+        }
+
+        public CreateCategoryModal(Main main)
+        {
+            InitializeComponent();
+            this.main = main;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -48,6 +57,7 @@ namespace BudgetBud.Components
 
             model.CreateCategory(this.nameText.Text);
             this.Close();
+            main.ChangeMenu(new Categories(this.main));
         }
     }
 }

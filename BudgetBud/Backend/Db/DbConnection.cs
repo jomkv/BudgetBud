@@ -14,7 +14,7 @@ namespace BudgetBud.Backend.Db
 
         public DbConnection()
         {
-            connectionString = "server=localhost;database=budgetbud;uid=jomkv;pwd=1234;";
+            connectionString = "server=localhost;database=budgetbud;uid=admin;pwd=admin;";
         }
 
         protected MySqlConnection GetConnection()
