@@ -29,6 +29,8 @@ namespace BudgetBud.Pages.Menus
             model.GetData();
 
             this.totalExpensesLoggedText.Text = model.totalExpenseLogged.ToString();
+            this.overallSpentText.Text = $"₱ {model.userTotalSpent}";
+            this.favoriteText.Text = model.favoriteCategory;
 
             PopulateDoughnutChart();
             PopulateBarGraph();
@@ -83,10 +85,25 @@ namespace BudgetBud.Pages.Menus
 
             bargraphChart.Refresh();
             doughnutChart.Refresh();
+
+            this.totalExpensesLoggedText.Text = model.totalExpenseLogged.ToString();
+            this.overallSpentText.Text = $"₱ {model.userTotalSpent}";
+            this.favoriteText.Text = model.favoriteCategory;
+        }
+
+        private void ResetButtons()
+        {
+            thisMonthBtn.Enabled = true;
+            todayBtn.Enabled = true;
+            ThirtyDaysBtn.Enabled = true;
+            sevenDaysBtn.Enabled = true;
         }
 
         private void thisMonthBtn_Click(object sender, EventArgs e)
         {
+            ResetButtons();
+            thisMonthBtn.Enabled = false;
+
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             DateTime toDate = fromDate.AddMonths(1).AddDays(-1);
 
@@ -95,6 +112,9 @@ namespace BudgetBud.Pages.Menus
 
         private void todayBtn_Click(object sender, EventArgs e)
         {
+            ResetButtons();
+            todayBtn.Enabled = false;
+
             DateTime fromDate = DateTime.Now.Date;
             DateTime toDate = fromDate.AddDays(1).AddTicks(-1);
 
@@ -103,6 +123,9 @@ namespace BudgetBud.Pages.Menus
 
         private void ThirtyDaysBtn_Click(object sender, EventArgs e)
         {
+            ResetButtons();
+            ThirtyDaysBtn.Enabled = false;
+
             DateTime fromDate = DateTime.Now.AddDays(-30);
             DateTime toDate = DateTime.Now;
 
@@ -111,10 +134,22 @@ namespace BudgetBud.Pages.Menus
 
         private void sevenDaysBtn_Click(object sender, EventArgs e)
         {
+            ResetButtons();
+            sevenDaysBtn.Enabled = false;
+
             DateTime fromDate = DateTime.Now.AddDays(-7);
             DateTime toDate = DateTime.Now;
 
             ChangeChartDate(fromDate, toDate);
+        }
+
+        private void customDateBtn_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            DateTime from = fromDate.Value;
+            DateTime to = toDate.Value;
+
+            ChangeChartDate(from, to);
         }
     }
 }

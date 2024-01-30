@@ -39,7 +39,7 @@ namespace BudgetBud.Pages.Menus
 
             if(model.expenseTable.Rows.Count == 0)
             {
-                filterBtn.Enabled = false;
+                //filterBtn.Enabled = false;
                 searchBtn.Enabled = false;
                 return;
             }

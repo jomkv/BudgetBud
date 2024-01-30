@@ -18,7 +18,9 @@ namespace BudgetBud.Backend.Models
 
         public List<KeyValuePair<int, string>> expenseCount { get; private set; } = new List<KeyValuePair<int, string>>();
         public List<KeyValuePair<double, string>> categoryTotalSpent { get; private set; } = new List<KeyValuePair<double, string>>();
+        public decimal userTotalSpent { get; private set; } = decimal.Zero;
         public int totalExpenseLogged { get; private set; } = 0;
+        public string favoriteCategory { get; private set; } = "No Expenses";
 
         public void FetchExpenseCount ()
         {
@@ -114,10 +116,14 @@ namespace BudgetBud.Backend.Models
                     connection.Open();
 
                     string expenseQuery = $@"SELECT COUNT(*) FROM `expensestbl`
-                                             WHERE `userId` = {UserContext.SessionUserId};";
+                                             WHERE `userId` = {UserContext.SessionUserId}
+                                             AND date BETWEEN @fromDate AND @toDate;";
 
                     using (var command = new MySqlCommand(expenseQuery, connection))
                     {
+                        command.Parameters.AddWithValue("@fromDate", fromDate);
+                        command.Parameters.AddWithValue("@toDate", toDate);
+
                         var result = command.ExecuteScalar();
 
                         if(result != DBNull.Value && result != null)
@@ -133,11 +139,60 @@ namespace BudgetBud.Backend.Models
             }
         }
 
+        private void FetchUserTotalSpent()
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string expenseQuery = $@"SELECT SUM(`amount`) FROM `expensestbl`
+                                             WHERE `userId` = {UserContext.SessionUserId}
+                                             AND date BETWEEN @fromDate AND @toDate;";
+
+                    using (var command = new MySqlCommand(expenseQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@fromDate", fromDate);
+                        command.Parameters.AddWithValue("@toDate", toDate);
+
+                        var result = command.ExecuteScalar();
+
+                        if (result != DBNull.Value && result != null)
+                        {
+                            userTotalSpent = Convert.ToDecimal(result);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        public void GetFavoriteCategory()
+        {
+            if (expenseCount.Count == 0)
+            {
+                // Handle the case where there are no expenses
+                this.favoriteCategory = "No Expenses";
+                return;
+            }
+
+            // Find the category with the highest count
+            KeyValuePair<int, string> favoriteCategory = expenseCount.OrderByDescending(x => x.Key).First();
+
+            this.favoriteCategory = favoriteCategory.Value;
+        }
+
         public void GetData()
         {
             FetchExpenseCount();
             FetchCategoryTotalSpent();
             FetchTotalExpenseLogged();
+            FetchUserTotalSpent();
+            GetFavoriteCategory();
         }
     }
 }
