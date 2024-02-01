@@ -50,7 +50,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(379, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(379, 82);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // categoryText
@@ -59,7 +59,7 @@
             this.categoryText.AutoSize = true;
             this.categoryText.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.categoryText.Location = new System.Drawing.Point(80, 0);
+            this.categoryText.Location = new System.Drawing.Point(80, 4);
             this.categoryText.Margin = new System.Windows.Forms.Padding(0);
             this.categoryText.Name = "categoryText";
             this.categoryText.Size = new System.Drawing.Size(219, 37);
@@ -71,18 +71,20 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.valueText);
-            this.panel1.Location = new System.Drawing.Point(77, 40);
+            this.panel1.Location = new System.Drawing.Point(63, 41);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 31);
+            this.panel1.Size = new System.Drawing.Size(253, 38);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(5, 1);
+            this.label1.Location = new System.Drawing.Point(2, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 25);
@@ -92,9 +94,10 @@
             // valueText
             // 
             this.valueText.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.valueText.Location = new System.Drawing.Point(39, 6);
+            this.valueText.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.valueText.Location = new System.Drawing.Point(34, 3);
             this.valueText.Name = "valueText";
-            this.valueText.Size = new System.Drawing.Size(182, 20);
+            this.valueText.Size = new System.Drawing.Size(216, 33);
             this.valueText.TabIndex = 0;
             // 
             // BudgetInputValue
@@ -105,7 +108,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BudgetInputValue";
-            this.Size = new System.Drawing.Size(379, 74);
+            this.Size = new System.Drawing.Size(379, 82);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);

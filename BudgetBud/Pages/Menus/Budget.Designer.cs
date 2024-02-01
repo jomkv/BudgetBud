@@ -93,10 +93,10 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.panel2.Controls.Add(this.monthText);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(244, 16);
+            this.panel2.Location = new System.Drawing.Point(215, 16);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(424, 56);
+            this.panel2.Size = new System.Drawing.Size(482, 56);
             this.panel2.TabIndex = 3;
             // 
             // monthText
@@ -108,9 +108,9 @@
             this.monthText.Location = new System.Drawing.Point(274, 0);
             this.monthText.Margin = new System.Windows.Forms.Padding(0);
             this.monthText.Name = "monthText";
-            this.monthText.Size = new System.Drawing.Size(138, 50);
+            this.monthText.Size = new System.Drawing.Size(212, 50);
             this.monthText.TabIndex = 3;
-            this.monthText.Text = "Month";
+            this.monthText.Text = "September";
             // 
             // label1
             // 
@@ -139,9 +139,10 @@
             // budgetText
             // 
             this.budgetText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.budgetText.Location = new System.Drawing.Point(65, 13);
+            this.budgetText.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.budgetText.Location = new System.Drawing.Point(65, 9);
             this.budgetText.Name = "budgetText";
-            this.budgetText.Size = new System.Drawing.Size(174, 20);
+            this.budgetText.Size = new System.Drawing.Size(174, 33);
             this.budgetText.TabIndex = 4;
             // 
             // pictureBox1
@@ -243,12 +244,12 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(89, 0);
+            this.label4.Location = new System.Drawing.Point(96, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(236, 34);
+            this.label4.Size = new System.Drawing.Size(223, 34);
             this.label4.TabIndex = 6;
             this.label4.Text = "Allocate Budget";
             // 
@@ -257,7 +258,7 @@
             this.valueTypeDropdown.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.valueTypeDropdown.DisplayMember = "   ";
             this.valueTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.valueTypeDropdown.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueTypeDropdown.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueTypeDropdown.FormattingEnabled = true;
             this.valueTypeDropdown.Items.AddRange(new object[] {
             "Percent",

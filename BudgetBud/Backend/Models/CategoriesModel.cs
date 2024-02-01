@@ -195,8 +195,8 @@ namespace BudgetBud.Backend.Models
                 {
                     connection.Open();
 
-                    string categoryQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `userId`) 
-                                              VALUES ('{name}', 0, '{UserContext.SessionUserId}');";
+                    string categoryQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `budget_amount`, `userId`) 
+                                              VALUES ('{name}', 0, 0, '{UserContext.SessionUserId}');";
 
                     using (var command = new MySqlCommand(categoryQuery, connection))
                     {

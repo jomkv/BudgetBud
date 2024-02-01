@@ -86,8 +86,8 @@ namespace BudgetBud.Pages.Menus
 
                 decimal budget;
 
-                // CategoryId, CategoryBudget
-                List<KeyValuePair<int, decimal>> categoryBudgets = new List<KeyValuePair<int, decimal>>();
+                // CategoryId, BudgetPercent, BudgetAmount
+                List<CategoryBudget<int, decimal, decimal>> categoryBudgets = new List<CategoryBudget<int, decimal, decimal>>();
 
                 decimal total = 0;
 
@@ -104,7 +104,7 @@ namespace BudgetBud.Pages.Menus
 
                 if (budget <= 0)
                 {
-                    errorText.Text = "Budget must be greater than 0";
+                    errorText.Text = "Budget must be greater than 100";
                     return;
                 }
                 #endregion
@@ -113,10 +113,10 @@ namespace BudgetBud.Pages.Menus
 
                 foreach (Control control in budgetContainer.Controls)
                 {
-                    if (control is BudgetInputPercent budgetInput)
+                    if (control is BudgetInputPercent budgetInputPercent)
                     {
-                        decimal categoryBudget;
-                        bool response = decimal.TryParse(budgetInput.input, out categoryBudget);
+                        decimal budgetPercent;
+                        bool response = decimal.TryParse(budgetInputPercent.input, out budgetPercent);
 
                         #region Category Input Validation
                         if (!response)
@@ -124,86 +124,24 @@ namespace BudgetBud.Pages.Menus
                             errorText.Text = "Invalid category budget input";
                             return;
                         }
-                        else if (categoryBudget < 0)
+                        else if (budgetPercent < 0)
                         {
                             errorText.Text = "Category Budget cannot be negative";
                             return;
                         }
                         #endregion
 
-                        categoryBudgets.Add(new KeyValuePair<int, decimal>(budgetInput.categoryId, categoryBudget));
+                        // Convert percent to literal amount
+                        decimal budgetAmount = budgetPercent * budget / 100;
 
-                        total += categoryBudget;
+                        categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputPercent.categoryId, budgetPercent, budgetAmount));
+
+                        total += budgetPercent;
                     }
-                }
-
-                #endregion
-
-                if (total > 100)
-                {
-                    errorText.Text = "Total Percent must not exceed 100";
-                }
-                else
-                {
-                    errorText.Text = "";
-                    MessageBox.Show("Budget Saved");
-                    model.SaveBudget(categoryBudgets, budget, true);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error: {ex.Message}");
-            }
-            finally
-            {
-                this.saveBtn.Enabled = true;
-            }
-        }
-
-        #endregion
-
-        #region Save using Exact Value
-        private void SaveBudgetValue()
-        {
-            try
-            {
-                this.saveBtn.Enabled = false;
-
-                #region Properties
-
-                decimal budget;
-
-                // CategoryId, CategoryBudget
-                List<KeyValuePair<int, decimal>> categoryBudgets = new List<KeyValuePair<int, decimal>>();
-
-                decimal total = 0;
-
-                #endregion
-
-                bool res = Decimal.TryParse(budgetText.Text, out budget);
-
-                #region Input Validation
-                if (!res)
-                {
-                    errorText.Text = "Invalid budget input";
-                    return;
-                }
-
-                if (budget <= 0)
-                {
-                    errorText.Text = "Budget must be greater than 0";
-                    return;
-                }
-                #endregion
-
-                #region Iterate through Input User Controls 
-
-                foreach (Control control in budgetContainer.Controls)
-                {
-                    if (control is BudgetInputValue budgetInput)
+                    else if (control is BudgetInputValue budgetInputValue)
                     {
-                        decimal categoryBudget;
-                        bool response = decimal.TryParse(budgetInput.input, out categoryBudget);
+                        decimal budgetAmount;
+                        bool response = decimal.TryParse(budgetInputValue.input, out budgetAmount);
 
                         #region Category Input Validation
                         if (!response)
@@ -211,31 +149,38 @@ namespace BudgetBud.Pages.Menus
                             errorText.Text = "Invalid category budget input";
                             return;
                         }
-                        else if (categoryBudget < 0)
+                        else if (budgetAmount < 0)
                         {
                             errorText.Text = "Category Budget cannot be negative";
                             return;
                         }
                         #endregion
 
-                        categoryBudgets.Add(new KeyValuePair<int, decimal>(budgetInput.categoryId, categoryBudget));
+                        // Convert amount literal to percent
+                        decimal budgetPercent = budgetAmount / budget * 100;
 
-                        total += categoryBudget;
+                        categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputValue.categoryId, budgetPercent, budgetAmount));
+
+                        total += budgetAmount;
                     }
                 }
 
                 #endregion
 
-                if (total > budget)
+                if (valueTypeDropdown.SelectedIndex == 0 && total > 100)
                 {
-                    errorText.Text = "Total Budget per Category must not exceed Budget";
+                    errorText.Text = "Total Percent must not exceed 0";
+                    return;
                 }
-                else
+                else if (valueTypeDropdown.SelectedIndex == 1 && total > budget)
                 {
-                    errorText.Text = "";
-                    MessageBox.Show("Budget Saved");
-                    model.SaveBudget(categoryBudgets, budget, false);
+                    errorText.Text = "Total Amount must not exceed Budget";
+                    return;
                 }
+
+                errorText.Text = "";
+                MessageBox.Show("Budget Saved");
+                model.SaveBudget(categoryBudgets, budget);
             }
             catch (Exception ex)
             {
@@ -252,15 +197,7 @@ namespace BudgetBud.Pages.Menus
         #region Save 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if(valueTypeDropdown.SelectedIndex == 0)
-            {
-                SaveBudgetPercent();
-            }
-            else
-            {
-                SaveBudgetValue();
-            }
-           
+            SaveBudgetPercent();
         }
         #endregion
 

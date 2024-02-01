@@ -70,13 +70,13 @@ namespace BudgetBud.Backend
                     }
 
                     // initialize categories table
-                    string categoriesQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `userId`) 
+                    string categoriesQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `budget_amount`, `userId`) 
                                                 VALUES 
-                                                ('Food', '20', '{userId}'), 
-                                                ('Entertainment', '20', '{userId}'),
-                                                ('Health and Wellness', '20', '{userId}'),
-                                                ('Transportation', '20', '{userId}'),
-                                                ('Housing', '20', '{userId}');";
+                                                ('Food', '20', '0', '{userId}'), 
+                                                ('Entertainment', '20', '0', '{userId}'),
+                                                ('Health and Wellness', '20', '0', '{userId}'),
+                                                ('Transportation', '20', '0', '{userId}'),
+                                                ('Housing', '20', '0', '{userId}');";
 
                     using (var command = new MySqlCommand(categoriesQuery, connection))
                     {
