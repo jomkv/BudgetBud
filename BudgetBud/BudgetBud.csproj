@@ -108,11 +108,17 @@
     <Compile Include="Backend\Models\ExpenseModel.cs" />
     <Compile Include="Backend\UserDataAccess.cs" />
     <Compile Include="Backend\UserContext.cs" />
-    <Compile Include="Components\BudgetInput.cs">
+    <Compile Include="Components\BudgetInputValue.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\BudgetInput.Designer.cs">
-      <DependentUpon>BudgetInput.cs</DependentUpon>
+    <Compile Include="Components\BudgetInputValue.Designer.cs">
+      <DependentUpon>BudgetInputValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\BudgetInputPercent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\BudgetInputPercent.Designer.cs">
+      <DependentUpon>BudgetInputPercent.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\CategoryEditModal.cs">
       <SubType>Form</SubType>
@@ -149,6 +155,12 @@
     </Compile>
     <Compile Include="Pages\Menus\Analysis.Designer.cs">
       <DependentUpon>Analysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Menus\Home2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Menus\Home2.Designer.cs">
+      <DependentUpon>Home2.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.cs">
       <SubType>Form</SubType>
@@ -200,8 +212,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Components\BudgetInput.resx">
-      <DependentUpon>BudgetInput.cs</DependentUpon>
+    <EmbeddedResource Include="Components\BudgetInputValue.resx">
+      <DependentUpon>BudgetInputValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\BudgetInputPercent.resx">
+      <DependentUpon>BudgetInputPercent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\CategoryEditModal.resx">
       <DependentUpon>CategoryEditModal.cs</DependentUpon>
@@ -220,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Menus\Analysis.resx">
       <DependentUpon>Analysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Menus\Home2.resx">
+      <DependentUpon>Home2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

@@ -57,7 +57,8 @@ namespace BudgetBud.Pages
 
             if (CheckSessionValidity())
             {
-                Home homePage = new Home();
+                Home2 homePage = new Home2();
+                homePage.Dock = DockStyle.Fill;
                 ChangeMenu(homePage);
             }
         }
@@ -176,7 +177,7 @@ namespace BudgetBud.Pages
             UpdateNavLine(homeBtn.Height, homeBtn.Top, homeBtn.Left);
             homeBtn.BackColor = Color.FromArgb(46, 51, 73);
 
-            Home homePage = new Home();
+            Home2 homePage = new Home2();
             ChangeMenu(homePage);
         }
 

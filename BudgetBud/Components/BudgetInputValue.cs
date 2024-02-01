@@ -10,29 +10,29 @@ using System.Windows.Forms;
 
 namespace BudgetBud.Components
 {
-    public partial class BudgetInput : UserControl
+    public partial class BudgetInputValue : UserControl
     {
         public int categoryId { get; private set; }
         public string input
         {
             get
             {
-                return this.percentText.Text;
+                return this.valueText.Text;
             }
             private set { }
         }
 
-        public BudgetInput()
+        public BudgetInputValue()
         {
             InitializeComponent();
         }
 
-        public BudgetInput(int categoryId, string categoryName, int percent)
+        public BudgetInputValue(int categoryId, string categoryName, decimal value)
         {
             InitializeComponent();
             this.categoryText.Text = categoryName;
             this.categoryId = categoryId;
-            this.percentText.Text = percent.ToString();
+            this.valueText.Text = value.ToString();
         }
     }
 }
