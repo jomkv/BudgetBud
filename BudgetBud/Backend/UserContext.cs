@@ -12,5 +12,6 @@ namespace BudgetBud.Backend
         public static int SessionUserId { get; set; }
         public static string UserName { get; set; } = "Username";
         public static string Status { get; set; } = "Status";
+        public static string FullName { get; set; } = "Full Name";
     }
 }

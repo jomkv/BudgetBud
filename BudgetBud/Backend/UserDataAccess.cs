@@ -109,7 +109,7 @@ namespace BudgetBud.Backend
                 {
                     connection.Open();
 
-                    string loginQuery = $@"SELECT `id`, `username`, `status`
+                    string loginQuery = $@"SELECT `id`, `username`, `status`, `full_name`
                                            FROM `userstbl`
                                            WHERE `username` = '{username}'
                                            AND `password` = '{password}'";
@@ -125,6 +125,7 @@ namespace BudgetBud.Backend
                                 int userId = reader.GetInt32("id");
                                 string fetchedUsername = reader.GetString("username");
                                 string fetchedStatus = reader.GetString("status");
+                                string fetchedFullname = reader.GetString("full_name");
 
                                 // if valid user (successful login)
                                 if (userId != 0)
@@ -136,6 +137,7 @@ namespace BudgetBud.Backend
                                     UserContext.SessionUserId = userId;
                                     UserContext.UserName = fetchedUsername;
                                     UserContext.Status = fetchedStatus;
+                                    UserContext.FullName = fetchedFullname;
                                 }
                             }
                         }

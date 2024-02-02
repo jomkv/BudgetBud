@@ -33,7 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.fullNameText = new System.Windows.Forms.Label();
             this.doughnutChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -47,10 +47,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.totalSpentText = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.budgetText = new System.Windows.Forms.Label();
+            this.expenseCountText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doughnutChart)).BeginInit();
@@ -69,7 +69,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.fullNameText, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.doughnutChart, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 1);
@@ -83,18 +83,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(919, 605);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label3
+            // fullNameText
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(74, 65);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(311, 50);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Hello, Full Name";
+            this.fullNameText.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.fullNameText.AutoSize = true;
+            this.fullNameText.Font = new System.Drawing.Font("Nirmala UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullNameText.ForeColor = System.Drawing.Color.Gainsboro;
+            this.fullNameText.Location = new System.Drawing.Point(74, 65);
+            this.fullNameText.Margin = new System.Windows.Forms.Padding(0);
+            this.fullNameText.Name = "fullNameText";
+            this.fullNameText.Size = new System.Drawing.Size(311, 50);
+            this.fullNameText.TabIndex = 14;
+            this.fullNameText.Text = "Hello, Full Name";
             // 
             // doughnutChart
             // 
@@ -287,8 +287,8 @@
             this.tableLayoutPanel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.totalSpentText, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.label69, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(35, 247);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(35);
@@ -300,38 +300,38 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(389, 142);
             this.tableLayoutPanel8.TabIndex = 3;
             // 
-            // label4
+            // totalSpentText
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label4.Location = new System.Drawing.Point(158, 71);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 45);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "₱ 0";
+            this.totalSpentText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.totalSpentText.AutoSize = true;
+            this.totalSpentText.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalSpentText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.totalSpentText.Location = new System.Drawing.Point(158, 71);
+            this.totalSpentText.Margin = new System.Windows.Forms.Padding(0);
+            this.totalSpentText.Name = "totalSpentText";
+            this.totalSpentText.Size = new System.Drawing.Size(73, 45);
+            this.totalSpentText.TabIndex = 13;
+            this.totalSpentText.Text = "₱ 0";
             // 
-            // label6
+            // label69
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label6.Location = new System.Drawing.Point(64, 31);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(261, 40);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Total Spent Today";
+            this.label69.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label69.Location = new System.Drawing.Point(64, 31);
+            this.label69.Margin = new System.Windows.Forms.Padding(0);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(261, 40);
+            this.label69.TabIndex = 9;
+            this.label69.Text = "Total Spent Today";
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.budgetText, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.expenseCountText, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(35, 35);
@@ -344,18 +344,18 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(389, 142);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
-            // budgetText
+            // expenseCountText
             // 
-            this.budgetText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.budgetText.AutoSize = true;
-            this.budgetText.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.budgetText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.budgetText.Location = new System.Drawing.Point(175, 71);
-            this.budgetText.Margin = new System.Windows.Forms.Padding(0);
-            this.budgetText.Name = "budgetText";
-            this.budgetText.Size = new System.Drawing.Size(38, 45);
-            this.budgetText.TabIndex = 13;
-            this.budgetText.Text = "0";
+            this.expenseCountText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.expenseCountText.AutoSize = true;
+            this.expenseCountText.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expenseCountText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.expenseCountText.Location = new System.Drawing.Point(175, 71);
+            this.expenseCountText.Margin = new System.Windows.Forms.Padding(0);
+            this.expenseCountText.Name = "expenseCountText";
+            this.expenseCountText.Size = new System.Drawing.Size(38, 45);
+            this.expenseCountText.TabIndex = 13;
+            this.expenseCountText.Text = "0";
             // 
             // label1
             // 
@@ -415,10 +415,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.DataVisualization.Charting.Chart doughnutChart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label budgetText;
+        private System.Windows.Forms.Label fullNameText;
+        private System.Windows.Forms.Label expenseCountText;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label totalSpentText;
+        private System.Windows.Forms.Label label69;
     }
 }
