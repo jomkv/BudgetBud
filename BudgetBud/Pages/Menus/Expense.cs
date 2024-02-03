@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Backend.Models;
+using BudgetBud.Components;
 
 namespace BudgetBud.Pages.Menus
 {
@@ -37,6 +38,7 @@ namespace BudgetBud.Pages.Menus
         {
             model.FetchCategories();
 
+            // Populate categories dropdown
             if (model.categories.Count > 0)
             {
                 // add categories from db to combobox
@@ -47,6 +49,19 @@ namespace BudgetBud.Pages.Menus
                     // Append category id to list
                     categoryIDs.Add(category.Key);
                 }
+            }
+
+            // Populate expense meters
+
+            // Reverse traverse
+            for(int i = model.expenseMeters2.Count - 1; i >= 0; i--)
+            {
+                ExpenseMeter meter = model.expenseMeters2[i];
+
+                CategoryProgressBar progress = new CategoryProgressBar(meter.CategoryName, meter.MeterPercent, meter.Spent, meter.Remaining);
+
+                progress.Dock = DockStyle.Top;
+                metersContainer.Controls.Add(progress);
             }
         }
 

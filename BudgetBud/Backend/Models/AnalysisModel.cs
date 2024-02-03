@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BudgetBud.Backend.Db;
+using MySqlX.XDevAPI;
 
 namespace BudgetBud.Backend.Models
 {
@@ -21,8 +22,9 @@ namespace BudgetBud.Backend.Models
         public decimal userTotalSpent { get; private set; } = decimal.Zero;
         public int totalExpenseLogged { get; private set; } = 0;
         public string favoriteCategory { get; private set; } = "No Expenses";
+        public decimal avgDailySpent { get; private set; } = 0;
 
-        public void FetchExpenseCount ()
+        private void FetchExpenseCount ()
         {
             try
             {
@@ -65,7 +67,7 @@ namespace BudgetBud.Backend.Models
             
         }
 
-        public void FetchCategoryTotalSpent()
+        private void FetchCategoryTotalSpent()
         {
             try
             {
@@ -161,6 +163,30 @@ namespace BudgetBud.Backend.Models
                         if (result != DBNull.Value && result != null)
                         {
                             userTotalSpent = Convert.ToDecimal(result);
+
+                            // Calculate avg daily spent
+
+                            int numberOfDays = (int)(toDate - fromDate).TotalDays;
+
+                            if (fromDate == DateTime.MinValue && toDate == DateTime.MaxValue) // If "all time" is selected
+                            {
+                                numberOfDays = GetNumOfDaysAllTime();
+                            }
+
+                            if (numberOfDays == 0)
+                            {
+                                avgDailySpent = Math.Round(userTotalSpent, 2);
+                                return;
+                            }
+                            
+
+                            decimal averageDailySpent = userTotalSpent / numberOfDays;
+                            avgDailySpent = Math.Round(averageDailySpent, 2);
+                        }
+                        else
+                        {
+                            userTotalSpent = 0;
+                            avgDailySpent = 0;
                         }
                     }
                 }
@@ -169,6 +195,43 @@ namespace BudgetBud.Backend.Models
             {
                 Debug.WriteLine($"Error: {e.Message}");
             }
+        }
+
+        private int GetNumOfDaysAllTime()
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string dateQuery = $@"SELECT MIN(`date`) AS earliestDate, MAX(`date`) AS latestDate
+                                          FROM `expensestbl`
+                                          WHERE `userId` = {UserContext.SessionUserId};";
+
+                    using (var command = new MySqlCommand(dateQuery, connection))
+                    {
+                        var reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            DateTime earliestDate = Convert.ToDateTime(reader["earliestDate"]);
+                            DateTime latestDate = Convert.ToDateTime(reader["latestDate"]);
+
+                            int numberOfDays = (int)(latestDate - earliestDate).TotalDays;
+                            return numberOfDays;
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+
+            return 0;
         }
 
         public void GetFavoriteCategory()

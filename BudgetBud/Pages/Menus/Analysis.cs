@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ namespace BudgetBud.Pages.Menus
             this.totalExpensesLoggedText.Text = model.totalExpenseLogged.ToString();
             this.overallSpentText.Text = $"₱ {model.userTotalSpent}";
             this.favoriteText.Text = model.favoriteCategory;
+            this.avgDailyText.Text = $"₱ {model.avgDailySpent}";
 
             PopulateDoughnutChart();
             PopulateBarGraph();
@@ -38,6 +40,7 @@ namespace BudgetBud.Pages.Menus
 
         #region Populate Charts
 
+        #region Doughnut 
         public void PopulateDoughnutChart ()
         {
             // Clear existing data in the chart
@@ -55,27 +58,68 @@ namespace BudgetBud.Pages.Menus
                 doughnutSeries.Points.AddXY(expenseCount.Value, expenseCount.Key);
             }
 
+            #region Style
+            doughnutSeries.LabelForeColor = Color.White;
+            doughnutSeries.Font = new Font("Nirmala UI", 14.25f, FontStyle.Bold); 
+            legend.Font = new Font("Nirmala UI", 11.25f, FontStyle.Bold);
+            legend.ForeColor = Color.Gainsboro;
             doughnutChart.Series.Add(doughnutSeries);
             legend.Docking = Docking.Bottom;
             doughnutChart.Legends.Add(legend);
             doughnutChart.Legends[0].BackColor = Color.FromArgb(37, 42, 64);
             doughnutChart.Palette = ChartColorPalette.Berry;
-        }
+            #endregion
 
+            doughnutChart.Refresh();
+        }
+        #endregion
+
+        #region Bar Graph
         public void PopulateBarGraph()
         {
+            // Clear existing data in the chart
+            bargraphChart.Series.Clear();
+
+            // Create a new series
+            Series bargraphSeries = new Series("AmountSpentPerCategory");
+            bargraphSeries.ChartType = SeriesChartType.Column;
 
             for (int i = 0; i < model.categoryTotalSpent.Count; i++)
             {
-                // Use the Y value for the horizontal bar
-                bargraphChart.Series[0].Points.Add(new DataPoint(i + 1, model.categoryTotalSpent[i].Key) { AxisLabel = model.categoryTotalSpent[i].Value });
+                // Add bars accordingly
+                bargraphSeries.Points.Add(new DataPoint(i + 1, model.categoryTotalSpent[i].Key) { AxisLabel = model.categoryTotalSpent[i].Value });
             }
+
+            bargraphChart.Series.Add(bargraphSeries);
+
+            #region Style
+
+            var xAxis = bargraphChart.ChartAreas[0].AxisX;
+            var yAxis = bargraphChart.ChartAreas[0].AxisY;
+
+            // Change the color of the gridlines
+            xAxis.MajorGrid.LineColor = Color.Transparent;
+            yAxis.MajorGrid.LineColor = Color.Transparent;
+
+            // Change the color of the labels
+            yAxis.LabelStyle.ForeColor = Color.Gainsboro; 
+            xAxis.LabelStyle.ForeColor = Color.Gainsboro;
+
+            // Change font of labels
+            yAxis.LabelStyle.Font = new Font("Nirmala UI", 11.25f, FontStyle.Bold);
+            xAxis.LabelStyle.Font = new Font("Nirmala UI", 11.25f, FontStyle.Bold);
+
+            //bargraphChart.BorderlineColor = Color.Gainsboro;
+
+            #endregion
 
             bargraphChart.Refresh();
         }
+        #endregion
 
         #endregion
 
+        #region Helper Functions
         private void ChangeChartDate(DateTime from, DateTime to)
         {
             model.fromDate = from;
@@ -89,6 +133,7 @@ namespace BudgetBud.Pages.Menus
             this.totalExpensesLoggedText.Text = model.totalExpenseLogged.ToString();
             this.overallSpentText.Text = $"₱ {model.userTotalSpent}";
             this.favoriteText.Text = model.favoriteCategory;
+            this.avgDailyText.Text = $"₱ {model.avgDailySpent}";
         }
 
         private void ResetButtons()
@@ -98,6 +143,8 @@ namespace BudgetBud.Pages.Menus
             ThirtyDaysBtn.Enabled = true;
             sevenDaysBtn.Enabled = true;
         }
+
+        #endregion
 
         private void thisMonthBtn_Click(object sender, EventArgs e)
         {

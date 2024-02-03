@@ -33,5 +33,26 @@ namespace BudgetBud.Components
                 this.progressBar.Value = percent;
             }
         }
+
+        public CategoryProgressBar(string name, int percent, decimal spent, decimal remaining)
+        {
+            InitializeComponent();
+
+            this.nameText.Text = name;
+            this.budgetText.Text = $"₱ {spent} / ₱ {remaining}";
+
+            if (percent > 100)
+            {
+                this.progressBar.Value = 100;
+
+                // Show over budget
+                this.label1.Visible = true;
+            }
+            else
+            {
+                this.progressBar.Value = percent;
+            }
+        }
+
     }
 }

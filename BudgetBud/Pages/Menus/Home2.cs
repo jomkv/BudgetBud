@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Backend.Models;
 using BudgetBud.Backend;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BudgetBud.Pages.Menus
 {
@@ -31,11 +32,22 @@ namespace BudgetBud.Pages.Menus
             this.expenseCountText.Text = model.expenseCountToday.ToString();
             this.totalSpentText.Text = $"₱ {model.totalSpentToday}";
             this.fullNameText.Text = $"Hello, {UserContext.FullName}";
+            this.monthBudgetText.Text = $"₱ {model.budget}";
 
             // Populate chart
             foreach(Category categoryBudget in model.categoryBudgets)
             {
-                doughnutChart.Series[0].Points.AddXY(categoryBudget.Name, categoryBudget.BudgetPercent);
+                int index = doughnutChart.Series[0].Points.AddXY(categoryBudget.Name, categoryBudget.BudgetPercent);
+
+                // Access the DataPoint using the index
+                DataPoint dataPoint = doughnutChart.Series[0].Points[index];
+
+                // Check if the category is "Unallocated"
+                if (categoryBudget.Name.Equals("Unallocated", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Set a specific color for the "Unallocated" category
+                    dataPoint.Color = Color.Gray;
+                }
             }
 
             doughnutChart.Refresh();
