@@ -43,6 +43,8 @@ namespace BudgetBud.Backend.Models
                     {
                         MySqlDataReader reader = command.ExecuteReader();
 
+                        categories = new List<KeyValuePair<int, string>>();
+
                         while (reader.Read())
                         {
                             int id = Convert.ToInt32(reader["categoryId"]);
@@ -169,15 +171,39 @@ namespace BudgetBud.Backend.Models
                 {
                     connection.Open();
 
-                    string categoryQuery = $@"UPDATE `categoriestbl`
-                                              SET `category_name` = '{newName}'
-                                              WHERE `categoryId` = '{id}';";
-
-                    using (var command = new MySqlCommand(categoryQuery, connection))
+                    using (var transaction = connection.BeginTransaction())
                     {
-                        command.ExecuteNonQuery();
-                    }
+                        try
+                        {
+                            // Edit Category name
+                            string categoryQuery = $@"UPDATE `categoriestbl`
+                                              SET `category_name` = '{newName}'
+                                              WHERE `categoryId` = {id};";
 
+                            using (var command = new MySqlCommand(categoryQuery, connection))
+                            {
+                                command.ExecuteNonQuery();
+                            }
+
+                            // Update expenses that uses that category
+                            string expensesQUery = $@"UPDATE `expensestbl`
+                                                  SET `category` = '{newName}'
+                                                  WHERE `categoryId` = {id}";
+
+                            using (var command = new MySqlCommand(expensesQUery, connection))
+                            {
+                                command.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch (Exception e)
+                        {
+                            // If error occurs, do not save / commit changes to database
+                            transaction.Rollback();
+                            Debug.WriteLine($"Transaction error: {e.Message}");
+                        }   
+                    }
                     connection.Close();
                 }   
             }

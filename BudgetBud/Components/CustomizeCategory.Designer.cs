@@ -38,9 +38,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.5F));
             this.tableLayoutPanel1.Controls.Add(this.deleteBtn, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.editBtn, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameText, 0, 0);
@@ -50,40 +50,42 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(444, 90);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(355, 73);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // deleteBtn
             // 
             this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deleteBtn.BackColor = System.Drawing.Color.Transparent;
-            this.deleteBtn.BackgroundImage = global::BudgetBud.Properties.Resources.trash_bin;
+            this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.deleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.deleteBtn.FlatAppearance.BorderSize = 0;
             this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteBtn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.deleteBtn.Location = new System.Drawing.Point(386, 23);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deleteBtn.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.White;
+            this.deleteBtn.Location = new System.Drawing.Point(281, 19);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(47, 43);
+            this.deleteBtn.Size = new System.Drawing.Size(66, 35);
             this.deleteBtn.TabIndex = 6;
+            this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // editBtn
             // 
             this.editBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.editBtn.BackColor = System.Drawing.Color.Transparent;
-            this.editBtn.BackgroundImage = global::BudgetBud.Properties.Resources.edit;
+            this.editBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.editBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.editBtn.FlatAppearance.BorderSize = 0;
             this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editBtn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.editBtn.Location = new System.Drawing.Point(319, 23);
-            this.editBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editBtn.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editBtn.ForeColor = System.Drawing.Color.White;
+            this.editBtn.Location = new System.Drawing.Point(201, 19);
+            this.editBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(47, 43);
+            this.editBtn.Size = new System.Drawing.Size(66, 35);
             this.editBtn.TabIndex = 5;
+            this.editBtn.Text = "Edit";
             this.editBtn.UseVisualStyleBackColor = false;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
@@ -93,23 +95,22 @@
             this.nameText.AutoSize = true;
             this.nameText.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nameText.Location = new System.Drawing.Point(0, 27);
+            this.nameText.Location = new System.Drawing.Point(0, 22);
             this.nameText.Margin = new System.Windows.Forms.Padding(0);
             this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(199, 35);
+            this.nameText.Size = new System.Drawing.Size(160, 28);
             this.nameText.TabIndex = 4;
             this.nameText.Text = "Category Name";
             this.nameText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CustomizeCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomizeCategory";
-            this.Size = new System.Drawing.Size(444, 90);
+            this.Size = new System.Drawing.Size(355, 73);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

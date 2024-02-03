@@ -37,13 +37,15 @@
             this.budgetText = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.budgetContainer = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.errorText = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.valueRadio = new System.Windows.Forms.RadioButton();
+            this.percentRadio = new System.Windows.Forms.RadioButton();
+            this.percentContainer = new System.Windows.Forms.Panel();
+            this.exactContainer = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.valueTypeDropdown = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,7 +53,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -160,37 +162,26 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.budgetContainer, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel4, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 154);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.47059F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.529412F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(913, 448);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
-            // budgetContainer
-            // 
-            this.budgetContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.budgetContainer.AutoScroll = true;
-            this.budgetContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.budgetContainer.Location = new System.Drawing.Point(267, 84);
-            this.budgetContainer.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.budgetContainer.Name = "budgetContainer";
-            this.budgetContainer.Size = new System.Drawing.Size(379, 271);
-            this.budgetContainer.TabIndex = 8;
-            // 
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.Controls.Add(this.errorText);
             this.panel4.Controls.Add(this.saveBtn);
-            this.panel4.Location = new System.Drawing.Point(322, 358);
+            this.panel4.Location = new System.Drawing.Point(322, 352);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(268, 65);
@@ -224,21 +215,75 @@
             this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanel5
             // 
-            this.tableLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.valueTypeDropdown, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(249, 3);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.16456F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.83544F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(415, 64);
-            this.tableLayoutPanel4.TabIndex = 10;
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.valueRadio, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.percentRadio, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.percentContainer, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.exactContainer, 2, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(96, 45);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(720, 304);
+            this.tableLayoutPanel5.TabIndex = 11;
+            // 
+            // valueRadio
+            // 
+            this.valueRadio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.valueRadio.AutoSize = true;
+            this.valueRadio.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueRadio.ForeColor = System.Drawing.Color.Gainsboro;
+            this.valueRadio.Location = new System.Drawing.Point(474, 8);
+            this.valueRadio.Name = "valueRadio";
+            this.valueRadio.Size = new System.Drawing.Size(142, 34);
+            this.valueRadio.TabIndex = 1;
+            this.valueRadio.TabStop = true;
+            this.valueRadio.Text = "Exact Value";
+            this.valueRadio.UseVisualStyleBackColor = true;
+            this.valueRadio.CheckedChanged += new System.EventHandler(this.HandleRadioChange);
+            // 
+            // percentRadio
+            // 
+            this.percentRadio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.percentRadio.AutoSize = true;
+            this.percentRadio.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.percentRadio.ForeColor = System.Drawing.Color.Gainsboro;
+            this.percentRadio.Location = new System.Drawing.Point(123, 8);
+            this.percentRadio.Name = "percentRadio";
+            this.percentRadio.Size = new System.Drawing.Size(104, 34);
+            this.percentRadio.TabIndex = 0;
+            this.percentRadio.TabStop = true;
+            this.percentRadio.Text = "Percent";
+            this.percentRadio.UseVisualStyleBackColor = true;
+            this.percentRadio.CheckedChanged += new System.EventHandler(this.HandleRadioChange);
+            // 
+            // percentContainer
+            // 
+            this.percentContainer.AutoScroll = true;
+            this.percentContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.percentContainer.Location = new System.Drawing.Point(0, 45);
+            this.percentContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.percentContainer.Name = "percentContainer";
+            this.percentContainer.Size = new System.Drawing.Size(350, 259);
+            this.percentContainer.TabIndex = 2;
+            // 
+            // exactContainer
+            // 
+            this.exactContainer.AutoScroll = true;
+            this.exactContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exactContainer.Enabled = false;
+            this.exactContainer.Location = new System.Drawing.Point(370, 45);
+            this.exactContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.exactContainer.Name = "exactContainer";
+            this.exactContainer.Size = new System.Drawing.Size(350, 259);
+            this.exactContainer.TabIndex = 3;
             // 
             // label4
             // 
@@ -246,30 +291,12 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(96, 0);
+            this.label4.Location = new System.Drawing.Point(257, 5);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(223, 34);
+            this.label4.Size = new System.Drawing.Size(399, 37);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Allocate Budget";
-            // 
-            // valueTypeDropdown
-            // 
-            this.valueTypeDropdown.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.valueTypeDropdown.DisplayMember = "   ";
-            this.valueTypeDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.valueTypeDropdown.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueTypeDropdown.FormattingEnabled = true;
-            this.valueTypeDropdown.Items.AddRange(new object[] {
-            "Percent",
-            "Exact Value"});
-            this.valueTypeDropdown.Location = new System.Drawing.Point(101, 36);
-            this.valueTypeDropdown.Margin = new System.Windows.Forms.Padding(2);
-            this.valueTypeDropdown.Name = "valueTypeDropdown";
-            this.valueTypeDropdown.Size = new System.Drawing.Size(213, 33);
-            this.valueTypeDropdown.TabIndex = 5;
-            this.valueTypeDropdown.ValueMember = "   ";
-            this.valueTypeDropdown.SelectedIndexChanged += new System.EventHandler(this.valueTypeDropdown_SelectedIndexChanged);
+            this.label4.Text = "Allocate Budget per Category";
             // 
             // Budget
             // 
@@ -287,10 +314,11 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -307,11 +335,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.Panel budgetContainer;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label errorText;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.ComboBox valueTypeDropdown;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.RadioButton percentRadio;
+        private System.Windows.Forms.RadioButton valueRadio;
+        private System.Windows.Forms.Panel percentContainer;
+        private System.Windows.Forms.Panel exactContainer;
     }
 }

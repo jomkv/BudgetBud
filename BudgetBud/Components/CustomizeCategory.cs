@@ -16,7 +16,7 @@ namespace BudgetBud.Components
     public partial class CustomizeCategory : UserControl
     {
         CategoriesModel model = new CategoriesModel();
-        public Main main { get; set; }
+        public Categories parent { get; set; }
 
         #region Properties
 
@@ -32,10 +32,10 @@ namespace BudgetBud.Components
         }
 
         #region Custom Constructor
-        public CustomizeCategory(Main main, int id, string name, bool allowDelete)
+        public CustomizeCategory(Categories parent, int id, string name, bool allowDelete)
         {
             InitializeComponent();
-            this.main = main;
+            this.parent = parent;
             this.nameText.Text = name;
             this.name = name;
             this.id = id;
@@ -57,13 +57,13 @@ namespace BudgetBud.Components
             if(dr == DialogResult.Yes)
             {
                 model.DeleteCategory(this.id);
-                main.ChangeMenu(new Categories(this.main));
+                parent.GetData();
             }
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            using (CategoryEditModal modal = new CategoryEditModal(this.main, this.name, this.id))
+            using (CategoryEditModal modal = new CategoryEditModal(this.parent, this.name, this.id))
             {
                 modal.ShowDialog();
             }

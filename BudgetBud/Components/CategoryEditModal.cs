@@ -17,7 +17,7 @@ namespace BudgetBud.Components
     public partial class CategoryEditModal : Form
     {
         CategoriesModel model = new CategoriesModel();
-        private Main main { get; set; }
+        private Categories parent { get; set; }
 
         private int categoryId { get; set; }
         public CategoryEditModal()
@@ -25,11 +25,12 @@ namespace BudgetBud.Components
             InitializeComponent();
         }
 
-        public CategoryEditModal(Main main, string name, int id)
+        public CategoryEditModal(Categories parent, string name, int id)
         {
             InitializeComponent();
             this.nameText.Text = name;
             this.categoryId = id;
+            this.parent = parent;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,10 +66,15 @@ namespace BudgetBud.Components
 
             model.EditCategory(this.categoryId, this.nameText.Text);
             this.Close();
-            main.ChangeMenu(new Categories(this.main));
+            parent.GetData();
         }
 
         private void closeBtn_Click(Object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

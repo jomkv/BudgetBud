@@ -21,7 +21,7 @@ namespace BudgetBud.Pages.Menus
         {
             InitializeComponent();
             GetData();
-            valueTypeDropdown.SelectedIndex = 0;
+            percentRadio.Checked = true;
         }
 
         #region Get Data from Database
@@ -36,19 +36,27 @@ namespace BudgetBud.Pages.Menus
 
             if (model.categories.Count > 0)
             {
+                percentContainer.Controls.Clear();
+                exactContainer.Controls.Clear();
+
                 // Reverse traverse the array of categories
                 for (int i = model.categories.Count - 1; i >= 0; i--)
                 {
                     // get category data
                     int id = model.categories[i].Id;
                     string name = model.categories[i].Name;
-                    decimal budget = model.categories[i].BudgetPercent;
+                    decimal budgetPercent = model.categories[i].BudgetPercent;
+                    decimal budgetAmount = model.categories[i].BudgetValue;
 
-                    BudgetInputPercent input = new BudgetInputPercent(id, name, budget);
+                    BudgetInputPercent inputPercent = new BudgetInputPercent(id, name, budgetPercent);
+                    BudgetInputValue inputValue = new BudgetInputValue(id, name, budgetAmount);
 
-                    input.Dock = DockStyle.Top;
-                    budgetContainer.Controls.Add(input);
+                    inputPercent.Dock = DockStyle.Top;
+                    inputValue.Dock = DockStyle.Top;
+                    percentContainer.Controls.Add(inputPercent);
+                    exactContainer.Controls.Add(inputValue);
                 }
+
             }
             else 
             {
@@ -75,8 +83,8 @@ namespace BudgetBud.Pages.Menus
 
         }
 
-        #region Save using Percent
-        private void SaveBudgetPercent()
+        #region Save 
+        private void SaveBudget()
         {
             try
             {
@@ -111,76 +119,95 @@ namespace BudgetBud.Pages.Menus
 
                 #region Iterate through Input User Controls 
 
-                foreach (Control control in budgetContainer.Controls)
+                if(percentRadio.Checked)
                 {
-                    if (control is BudgetInputPercent budgetInputPercent)
+                    #region Percent 
+
+                    foreach (Control control in percentContainer.Controls)
                     {
-                        decimal budgetPercent;
-                        bool response = decimal.TryParse(budgetInputPercent.input, out budgetPercent);
-
-                        #region Category Input Validation
-                        if (!response)
+                        if (control is BudgetInputPercent budgetInputPercent)
                         {
-                            errorText.Text = "Invalid category budget input";
-                            return;
+                            decimal budgetPercent;
+                            bool response = decimal.TryParse(budgetInputPercent.input, out budgetPercent);
+
+                            #region Category Input Validation
+                            if (!response)
+                            {
+                                errorText.Text = "Invalid category budget input";
+                                return;
+                            }
+                            else if (budgetPercent < 0)
+                            {
+                                errorText.Text = "Category Budget cannot be negative";
+                                return;
+                            }
+                            #endregion
+
+                            // Convert percent to literal amount
+                            decimal budgetAmount = budgetPercent * budget / 100;
+
+                            categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputPercent.categoryId, budgetPercent, budgetAmount));
+
+                            total += budgetPercent;
                         }
-                        else if (budgetPercent < 0)
-                        {
-                            errorText.Text = "Category Budget cannot be negative";
-                            return;
-                        }
-                        #endregion
-
-                        // Convert percent to literal amount
-                        decimal budgetAmount = budgetPercent * budget / 100;
-
-                        categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputPercent.categoryId, budgetPercent, budgetAmount));
-
-                        total += budgetPercent;
                     }
-                    else if (control is BudgetInputValue budgetInputValue)
+
+                    if(total > 100)
                     {
-                        decimal budgetAmount;
-                        bool response = decimal.TryParse(budgetInputValue.input, out budgetAmount);
-
-                        #region Category Input Validation
-                        if (!response)
-                        {
-                            errorText.Text = "Invalid category budget input";
-                            return;
-                        }
-                        else if (budgetAmount < 0)
-                        {
-                            errorText.Text = "Category Budget cannot be negative";
-                            return;
-                        }
-                        #endregion
-
-                        // Convert amount literal to percent
-                        decimal budgetPercent = budgetAmount / budget * 100;
-
-                        categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputValue.categoryId, budgetPercent, budgetAmount));
-
-                        total += budgetAmount;
+                        errorText.Text = "Total Percent must not exceed 0";
+                        return;
                     }
+
+                    #endregion
+                }
+                else if (valueRadio.Checked)
+                {
+                    #region Exact Value
+
+                    foreach (Control control in exactContainer.Controls)
+                    {
+                        if(control is BudgetInputValue budgetInputValue)
+                        {
+                            decimal budgetAmount;
+                            bool response = decimal.TryParse(budgetInputValue.input, out budgetAmount);
+
+                            #region Category Input Validation
+                            if (!response)
+                            {
+                                errorText.Text = "Invalid category budget input";
+                                return;
+                            }
+                            else if (budgetAmount < 0)
+                            {
+                                errorText.Text = "Category Budget cannot be negative";
+                                return;
+                            }
+                            #endregion
+
+                            // Convert amount literal to percent
+                            decimal budgetPercent = budgetAmount / budget * 100;
+
+                            categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputValue.categoryId, budgetPercent, budgetAmount));
+
+                            total += budgetAmount;
+                        }
+                    }
+
+                    if (total > budget)
+                    {
+                        errorText.Text = "Total Amount must not exceed Budget";
+                        return;
+                    }
+
+                    #endregion
                 }
 
                 #endregion
 
-                if (valueTypeDropdown.SelectedIndex == 0 && total > 100)
-                {
-                    errorText.Text = "Total Percent must not exceed 0";
-                    return;
-                }
-                else if (valueTypeDropdown.SelectedIndex == 1 && total > budget)
-                {
-                    errorText.Text = "Total Amount must not exceed Budget";
-                    return;
-                }
-
                 errorText.Text = "";
-                MessageBox.Show("Budget Saved");
                 model.SaveBudget(categoryBudgets, budget);
+                MessageBox.Show("Budget Saved");
+                GetData();
             }
             catch (Exception ex)
             {
@@ -197,61 +224,14 @@ namespace BudgetBud.Pages.Menus
         #region Save 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            SaveBudgetPercent();
+            SaveBudget();
         }
         #endregion
 
-        private void valueTypeDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        private void HandleRadioChange(object sender, EventArgs e)
         {
-            budgetContainer.Controls.Clear();
-
-            if(valueTypeDropdown.SelectedIndex == 0) // Percent
-            {
-                if (model.categories.Count > 0)
-                {
-                    // Reverse traverse the array of categories
-                    for (int i = model.categories.Count - 1; i >= 0; i--)
-                    {
-                        // get category data
-                        int id = model.categories[i].Id;
-                        string name = model.categories[i].Name;
-                        decimal budget = model.categories[i].BudgetPercent;
-
-                        BudgetInputPercent input = new BudgetInputPercent(id, name, budget);
-
-                        input.Dock = DockStyle.Top;
-                        budgetContainer.Controls.Add(input);
-                    }
-                }
-                else
-                {
-                    // TODO
-                }
-            }
-            else // Value
-            {
-                if (model.categories.Count > 0)
-                {
-                    // Reverse traverse the array of categories
-                    for (int i = model.categories.Count - 1; i >= 0; i--)
-                    {
-                        // get category data
-                        int id = model.categories[i].Id;
-                        string name = model.categories[i].Name;
-                        decimal budget = model.categories[i].BudgetValue;
-
-                        BudgetInputValue input = new BudgetInputValue(id, name, budget);
-
-                        input.Dock = DockStyle.Top;
-                        budgetContainer.Controls.Add(input);
-                    }
-                }
-                else
-                {
-                    // TODO
-                }
-            }
-            
+            percentContainer.Enabled = percentRadio.Checked;
+            exactContainer.Enabled = valueRadio.Checked;
         }
     }
 }
