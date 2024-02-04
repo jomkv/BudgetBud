@@ -22,6 +22,7 @@ namespace BudgetBud.Pages.Menus
             InitializeComponent();
             GetData();
             percentRadio.Checked = true;
+            UpdateFormState();
         }
 
         #region Get Data from Database
@@ -73,6 +74,24 @@ namespace BudgetBud.Pages.Menus
             else
             {
                 this.budgetText.Text = model.MonthlyBudget.ToString();
+            }
+        }
+
+        public void UpdateFormState()
+        {
+            foreach (Control control in percentContainer.Controls)
+            {
+                if (control is BudgetInputPercent inputPercent)
+                {
+                    inputPercent.enable = percentRadio.Checked;
+                }
+            }
+            foreach (Control control in exactContainer.Controls)
+            {
+                if (control is BudgetInputValue inputValue)
+                {
+                    inputValue.enable = valueRadio.Checked;
+                }
             }
         }
 
@@ -208,6 +227,7 @@ namespace BudgetBud.Pages.Menus
                 model.SaveBudget(categoryBudgets, budget);
                 MessageBox.Show("Budget Saved");
                 GetData();
+                UpdateFormState();
             }
             catch (Exception ex)
             {
@@ -230,8 +250,7 @@ namespace BudgetBud.Pages.Menus
 
         private void HandleRadioChange(object sender, EventArgs e)
         {
-            percentContainer.Enabled = percentRadio.Checked;
-            exactContainer.Enabled = valueRadio.Checked;
+            UpdateFormState();
         }
     }
 }

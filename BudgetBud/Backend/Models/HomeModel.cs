@@ -103,6 +103,7 @@ namespace BudgetBud.Backend.Models
                         {
                             this.spent = Convert.ToDecimal(result);
                             this.available -= this.spent;
+                            Debug.WriteLine(this.available);
                         }
                     }
 
@@ -125,8 +126,6 @@ namespace BudgetBud.Backend.Models
                 using (var connection = GetConnection())
                 {
                     connection.Open();
-
-                    Debug.WriteLine(today);
 
                     string expenseQuery = $@"SELECT COUNT(*) FROM `expensestbl`
                                              WHERE `userId` = {UserContext.SessionUserId}

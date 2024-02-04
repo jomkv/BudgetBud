@@ -18,6 +18,8 @@ namespace BudgetBud.Backend.Models
 
         public DataTable expenseTable { get; private set; }
         public List<KeyValuePair<int, string>> categories { get; private set; }
+        public string ExpenseTitle { get; set; }
+        public int? CategoryId { get; set; }
 
         #region Fetch Data from Database
 
@@ -27,14 +29,28 @@ namespace BudgetBud.Backend.Models
             {
                 using (var connection = GetConnection())
                 {
-                    connection.Open();
+                    var parameters = new List<MySqlParameter>();
+                    parameters.Add(new MySqlParameter("@userId", UserContext.SessionUserId));
 
-                    string expenseQuery = $@"SELECT `expenseId` AS 'ID', `category` AS 'Category', `title` AS 'Title', `description` AS 'Description', `amount` AS 'Amount', `date` AS 'Date'
-                                             FROM `expensestbl`
-                                             WHERE `userId` = {UserContext.SessionUserId}";
+                    string expenseQuery = @"SELECT `expenseId` AS 'ID', `category` AS 'Category', `title` AS 'Title', `description` AS 'Description', `amount` AS 'Amount', `date` AS 'Date'
+                                     FROM `expensestbl`
+                                     WHERE `userId` = @userId";
 
+                    if (!string.IsNullOrEmpty(ExpenseTitle))
+                    {
+                        expenseQuery += " AND `title` LIKE @title";
+                        parameters.Add(new MySqlParameter("@title", $"%{ExpenseTitle}%"));
+                    }
+
+                    if (CategoryId.HasValue)
+                    {
+                        expenseQuery += " AND `categoryId` = @categoryId";
+                        parameters.Add(new MySqlParameter("@categoryId", CategoryId));
+                    }
                     using (var command = new MySqlCommand(expenseQuery, connection))
                     {
+                        command.Parameters.AddRange(parameters.ToArray());
+
                         DataTable dataTable = new DataTable();
 
                         using (var adapter = new MySqlDataAdapter(command))

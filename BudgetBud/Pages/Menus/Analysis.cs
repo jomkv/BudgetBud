@@ -23,6 +23,7 @@ namespace BudgetBud.Pages.Menus
             InitializeComponent();
 
             GetData();
+            filterDropdown.SelectedIndex = 0;
         }
 
         public void GetData()
@@ -120,11 +121,8 @@ namespace BudgetBud.Pages.Menus
         #endregion
 
         #region Helper Functions
-        private void ChangeChartDate(DateTime from, DateTime to)
+        private void ReloadDatas()
         {
-            model.fromDate = from;
-            model.toDate = to;
-
             GetData();
 
             bargraphChart.Refresh();
@@ -136,67 +134,49 @@ namespace BudgetBud.Pages.Menus
             this.avgDailyText.Text = $"₱ {model.avgDailySpent}";
         }
 
-        private void ResetButtons()
-        {
-            thisMonthBtn.Enabled = true;
-            todayBtn.Enabled = true;
-            ThirtyDaysBtn.Enabled = true;
-            sevenDaysBtn.Enabled = true;
-        }
-
         #endregion
-
-        private void thisMonthBtn_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            thisMonthBtn.Enabled = false;
-
-            DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            DateTime toDate = fromDate.AddMonths(1).AddDays(-1);
-
-            ChangeChartDate(fromDate, toDate);
-        }
-
-        private void todayBtn_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            todayBtn.Enabled = false;
-
-            DateTime fromDate = DateTime.Now.Date;
-            DateTime toDate = fromDate.AddDays(1).AddTicks(-1);
-
-            ChangeChartDate(fromDate, toDate);
-        }
-
-        private void ThirtyDaysBtn_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            ThirtyDaysBtn.Enabled = false;
-
-            DateTime fromDate = DateTime.Now.AddDays(-30);
-            DateTime toDate = DateTime.Now;
-
-            ChangeChartDate(fromDate, toDate);
-        }
-
-        private void sevenDaysBtn_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            sevenDaysBtn.Enabled = false;
-
-            DateTime fromDate = DateTime.Now.AddDays(-7);
-            DateTime toDate = DateTime.Now;
-
-            ChangeChartDate(fromDate, toDate);
-        }
 
         private void customDateBtn_Click(object sender, EventArgs e)
         {
-            ResetButtons();
-            DateTime from = fromDate.Value;
-            DateTime to = toDate.Value;
+            model.fromDate = fromDate.Value;
+            model.toDate = toDate.Value;
 
-            ChangeChartDate(from, to);
+            ReloadDatas();
+        }
+
+        private void handleFilterChange(object sender, EventArgs e)
+        {
+            int index = filterDropdown.SelectedIndex;
+
+            switch(index)
+            {
+                case 0: // All time
+                    model.fromDate = DateTime.MinValue; 
+                    model.toDate = DateTime.MaxValue;
+                    break;
+                case 1: // This Month
+                    model.fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                    model.toDate = model.fromDate.AddMonths(1).AddDays(-1);
+                    break;
+                case 2: // Last 30 Days
+                    model.fromDate = DateTime.Now.AddDays(-30);
+                    model.toDate = DateTime.Now;
+                    break;
+                case 3: // Last 7 Days
+                    model.fromDate = DateTime.Now.AddDays(-7);
+                    model.toDate = DateTime.Now;
+                    break;
+                case 4: // Today
+                    model.fromDate = DateTime.Now.Date;
+                    model.toDate = model.fromDate.AddDays(1).AddTicks(-1);
+                    break;
+                default: // Default to all time
+                    model.fromDate = DateTime.MinValue;
+                    model.toDate = DateTime.MaxValue;
+                    break;
+            }
+
+            ReloadDatas();
         }
     }
 }

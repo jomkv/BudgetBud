@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BudgetBud.Backend.Db;
+using System.Drawing;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace BudgetBud.Backend
 {
@@ -109,7 +113,7 @@ namespace BudgetBud.Backend
                 {
                     connection.Open();
 
-                    string loginQuery = $@"SELECT `id`, `username`, `status`, `full_name`
+                    string loginQuery = $@"SELECT `id`, `username`, `status`, `full_name`, `profile_image`
                                            FROM `userstbl`
                                            WHERE `username` = '{username}'
                                            AND `password` = '{password}'";
@@ -123,14 +127,27 @@ namespace BudgetBud.Backend
                             {
                                 // Read values from the reader
                                 int userId = reader.GetInt32("id");
-                                string fetchedUsername = reader.GetString("username");
-                                string fetchedStatus = reader.GetString("status");
-                                string fetchedFullname = reader.GetString("full_name");
 
                                 // if valid user (successful login)
                                 if (userId != 0)
                                 {
-                                    output = true;
+                                    string fetchedUsername = reader.GetString("username");
+                                    string fetchedStatus = reader.GetString("status");
+                                    string fetchedFullname = reader.GetString("full_name");
+
+                                    // Image res
+                                    var res = reader["profile_image"];
+
+                                    // Set profile pic if not null
+                                    if (res != DBNull.Value && res != null)
+                                    {
+                                        byte[] profilePicRaw = (byte[])res;
+
+                                        MemoryStream ms = new MemoryStream(profilePicRaw);
+                                        Image image = Image.FromStream(ms);
+
+                                        UserContext.ProfilePic = image;
+                                    }
 
                                     // Set current session values
                                     UserContext.IsLoggedIn = true;
@@ -138,6 +155,8 @@ namespace BudgetBud.Backend
                                     UserContext.UserName = fetchedUsername;
                                     UserContext.Status = fetchedStatus;
                                     UserContext.FullName = fetchedFullname;
+
+                                    output = true;
                                 }
                             }
                         }
@@ -151,6 +170,77 @@ namespace BudgetBud.Backend
             {
                 Debug.WriteLine($"Error: {e.Message}");
                 return false;
+            }
+        }
+
+        public void FetchProfilePic(int userId)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string userQuery = $@"SELECT `profile_image`
+                                           FROM `userstbl`
+                                           WHERE `id` = {userId};";
+
+                    using (var command = new MySqlCommand(userQuery, connection))
+                    {
+                        var res = command.ExecuteScalar();
+
+                        if (res != DBNull.Value && res != null)
+                        {
+                            byte[] profilePicRaw = (byte[])res;
+
+                            MemoryStream ms = new MemoryStream(profilePicRaw);
+                            Image image = Image.FromStream(ms);
+
+                            UserContext.ProfilePic = image;
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+        }
+
+        public void FetchDetails(int userId)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string userQuery = $@"SELECT `full_name`, `username`
+                                           FROM `userstbl`
+                                           WHERE `id` = {userId};";
+
+                    using (var command = new MySqlCommand(userQuery, connection))
+                    {
+                        var reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            string fullname = reader.GetString("full_name");
+                            string username = reader.GetString("username");
+
+                            UserContext.UserName = username;
+                            UserContext.FullName = fullname;
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
             }
         }
 

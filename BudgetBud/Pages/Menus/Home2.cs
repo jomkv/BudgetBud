@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BudgetBud.Backend.Models;
 using BudgetBud.Backend;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Diagnostics;
 
 namespace BudgetBud.Pages.Menus
 {
@@ -27,8 +28,9 @@ namespace BudgetBud.Pages.Menus
         {
             model.GetData();
 
-            this.spentText.Text = model.spent.ToString();
-            this.availableText.Text = model.available.ToString();
+            this.spentText.Text = $"₱ {model.spent}";
+            this.availableText.Text = $"₱ {model.available}";
+            Debug.WriteLine($"avao;ab;e: {model.available}");
             this.expenseCountText.Text = model.expenseCountToday.ToString();
             this.totalSpentText.Text = $"₱ {model.totalSpentToday}";
             this.fullNameText.Text = $"Hello, {UserContext.FullName}";
@@ -37,16 +39,19 @@ namespace BudgetBud.Pages.Menus
             // Populate chart
             foreach(Category categoryBudget in model.categoryBudgets)
             {
-                int index = doughnutChart.Series[0].Points.AddXY(categoryBudget.Name, categoryBudget.BudgetPercent);
-
-                // Access the DataPoint using the index
-                DataPoint dataPoint = doughnutChart.Series[0].Points[index];
-
-                // Check if the category is "Unallocated"
-                if (categoryBudget.Name.Equals("Unallocated", StringComparison.OrdinalIgnoreCase))
+                if(categoryBudget.BudgetPercent > 0)
                 {
-                    // Set a specific color for the "Unallocated" category
-                    dataPoint.Color = Color.Gray;
+                    int index = doughnutChart.Series[0].Points.AddXY(categoryBudget.Name, categoryBudget.BudgetPercent);
+
+                    // Access the DataPoint using the index
+                    DataPoint dataPoint = doughnutChart.Series[0].Points[index];
+
+                    // Check if the category is "Unallocated"
+                    if (categoryBudget.Name.Equals("Unallocated", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Set a specific color for the "Unallocated" category
+                        dataPoint.Color = Color.Gray;
+                    }
                 }
             }
 

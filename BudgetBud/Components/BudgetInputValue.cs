@@ -22,6 +22,29 @@ namespace BudgetBud.Components
             private set { }
         }
 
+        public bool enable
+        {
+            get
+            {
+                return this.enable;
+            }
+            set
+            {
+                valueText.Enabled = value;
+
+                if (value == true) // If enable
+                {
+                    categoryText.ForeColor = Color.Gainsboro;
+                    label1.ForeColor = Color.Gainsboro;
+                }
+                else // If disable
+                {
+                    categoryText.ForeColor = Color.DarkGray;
+                    label1.ForeColor = Color.DarkGray;
+                }
+            }
+        }
+
         public BudgetInputValue()
         {
             InitializeComponent();

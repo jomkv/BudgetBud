@@ -144,7 +144,7 @@
             this.label1.Location = new System.Drawing.Point(-4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 32);
+            this.label1.Size = new System.Drawing.Size(101, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Full Name";
             // 
@@ -172,7 +172,7 @@
             this.label2.Location = new System.Drawing.Point(-4, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 32);
+            this.label2.Size = new System.Drawing.Size(101, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Username";
             // 
@@ -207,10 +207,10 @@
             this.loginText.Dock = System.Windows.Forms.DockStyle.Left;
             this.loginText.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.loginText.Location = new System.Drawing.Point(212, 0);
+            this.loginText.Location = new System.Drawing.Point(165, 0);
             this.loginText.Margin = new System.Windows.Forms.Padding(0);
             this.loginText.Name = "loginText";
-            this.loginText.Size = new System.Drawing.Size(55, 23);
+            this.loginText.Size = new System.Drawing.Size(43, 17);
             this.loginText.TabIndex = 9;
             this.loginText.Text = "Login";
             this.loginText.Click += new System.EventHandler(this.loginText_Click);
@@ -224,7 +224,7 @@
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(212, 23);
+            this.label3.Size = new System.Drawing.Size(165, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Already have an account?";
             // 
@@ -274,7 +274,7 @@
             this.label6.Location = new System.Drawing.Point(-4, 0);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(222, 32);
+            this.label6.Size = new System.Drawing.Size(174, 25);
             this.label6.TabIndex = 6;
             this.label6.Text = "Confirm Password";
             // 
@@ -305,7 +305,7 @@
             this.label5.Location = new System.Drawing.Point(-4, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 32);
+            this.label5.Size = new System.Drawing.Size(96, 25);
             this.label5.TabIndex = 6;
             this.label5.Text = "Password";
             // 
@@ -337,7 +337,7 @@
             this.errorText.Location = new System.Drawing.Point(278, 437);
             this.errorText.Margin = new System.Windows.Forms.Padding(0);
             this.errorText.Name = "errorText";
-            this.errorText.Size = new System.Drawing.Size(0, 23);
+            this.errorText.Size = new System.Drawing.Size(0, 17);
             this.errorText.TabIndex = 10;
             // 
             // Register

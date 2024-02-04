@@ -41,7 +41,7 @@ namespace BudgetBud.Components
             this.nameText.Text = name;
             this.budgetText.Text = $"₱ {spent} / ₱ {remaining}";
 
-            if (percent > 100)
+            if (percent > 100 || spent > remaining)
             {
                 this.progressBar.Value = 100;
 

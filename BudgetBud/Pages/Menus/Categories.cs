@@ -75,6 +75,7 @@ namespace BudgetBud.Pages.Menus
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             nameText.Text = "";
+            errorText.Text = "";
         }
 
         private void saveBtn_Click(object sender, EventArgs e)

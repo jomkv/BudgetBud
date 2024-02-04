@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.fullNameText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,8 +45,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.spentText = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.monthBudgetText = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.monthBudgetText = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.totalSpentText = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.expenseCountText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.doughnutChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
@@ -158,7 +158,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(144, 56);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(212, 56);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // availableText
@@ -217,12 +217,12 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.spentText, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(70, 13);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 13);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(143, 56);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(210, 56);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // spentText
@@ -231,7 +231,7 @@
             this.spentText.AutoSize = true;
             this.spentText.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spentText.ForeColor = System.Drawing.Color.Gainsboro;
-            this.spentText.Location = new System.Drawing.Point(90, 28);
+            this.spentText.Location = new System.Drawing.Point(157, 28);
             this.spentText.Margin = new System.Windows.Forms.Padding(0);
             this.spentText.Name = "spentText";
             this.spentText.Size = new System.Drawing.Size(53, 28);
@@ -244,25 +244,12 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(64, 0);
+            this.label2.Location = new System.Drawing.Point(131, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 28);
             this.label2.TabIndex = 12;
             this.label2.Text = "Spent";
-            // 
-            // monthBudgetText
-            // 
-            this.monthBudgetText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.monthBudgetText.AutoSize = true;
-            this.monthBudgetText.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthBudgetText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.monthBudgetText.Location = new System.Drawing.Point(125, 40);
-            this.monthBudgetText.Margin = new System.Windows.Forms.Padding(0);
-            this.monthBudgetText.Name = "monthBudgetText";
-            this.monthBudgetText.Size = new System.Drawing.Size(73, 40);
-            this.monthBudgetText.TabIndex = 13;
-            this.monthBudgetText.Text = "₱ 0";
             // 
             // tableLayoutPanel10
             // 
@@ -278,6 +265,32 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(324, 80);
             this.tableLayoutPanel10.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label3.Location = new System.Drawing.Point(12, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(299, 40);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "This month\'s budget";
+            // 
+            // monthBudgetText
+            // 
+            this.monthBudgetText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.monthBudgetText.AutoSize = true;
+            this.monthBudgetText.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthBudgetText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.monthBudgetText.Location = new System.Drawing.Point(125, 40);
+            this.monthBudgetText.Margin = new System.Windows.Forms.Padding(0);
+            this.monthBudgetText.Name = "monthBudgetText";
+            this.monthBudgetText.Size = new System.Drawing.Size(73, 40);
+            this.monthBudgetText.TabIndex = 13;
+            this.monthBudgetText.Text = "₱ 0";
             // 
             // tableLayoutPanel6
             // 
@@ -389,48 +402,35 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.doughnutChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            chartArea8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            chartArea8.Name = "ChartArea1";
-            this.doughnutChart.ChartAreas.Add(chartArea8);
-            legend8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend8.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend8.ForeColor = System.Drawing.Color.Gainsboro;
-            legend8.IsTextAutoFit = false;
-            legend8.Name = "Legend1";
-            this.doughnutChart.Legends.Add(legend8);
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            chartArea1.Name = "ChartArea1";
+            this.doughnutChart.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.ForeColor = System.Drawing.Color.Gainsboro;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.doughnutChart.Legends.Add(legend1);
             this.doughnutChart.Location = new System.Drawing.Point(402, 277);
             this.doughnutChart.Margin = new System.Windows.Forms.Padding(35);
             this.doughnutChart.Name = "doughnutChart";
             this.doughnutChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series8.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
-            series8.LabelForeColor = System.Drawing.Color.White;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.doughnutChart.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.doughnutChart.Series.Add(series1);
             this.doughnutChart.Size = new System.Drawing.Size(482, 293);
             this.doughnutChart.TabIndex = 13;
             this.doughnutChart.Text = "chart1";
-            title8.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
-            title8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            title8.Name = "Title1";
-            title8.Text = "Budget Allocation Overview";
-            this.doughnutChart.Titles.Add(title8);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(12, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(299, 40);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "This month\'s budget";
+            title1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
+            title1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            title1.Name = "Title1";
+            title1.Text = "Budget Allocation Overview";
+            this.doughnutChart.Titles.Add(title1);
             // 
             // Home2
             // 

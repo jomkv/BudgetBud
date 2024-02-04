@@ -16,6 +16,8 @@ namespace BudgetBud.Pages
 {
     public partial class Main : Form
     {
+        UserDataAccess dataAccess = new UserDataAccess();
+
         #region Round Edge Imports
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -42,6 +44,8 @@ namespace BudgetBud.Pages
             // Initialize Username and Status
             this.usernameText.Text = UserContext.UserName;
             this.statusText.Text = UserContext.Status;
+
+            ShowProfilePic();
 
             #region Navbar Stuff
 
@@ -117,6 +121,24 @@ namespace BudgetBud.Pages
         #region Navbar Actions
 
         #region Helper Functions
+
+        public void ShowProfilePic()
+        {
+            dataAccess.FetchProfilePic(UserContext.SessionUserId);
+
+            if (UserContext.ProfilePic != null)
+            {
+                profilePicBox.BackgroundImage = UserContext.ProfilePic;
+            }
+        }
+
+        public void GetUpdatedInfo()
+        {
+            dataAccess.FetchDetails(UserContext.SessionUserId);
+
+            this.usernameText.Text = UserContext.UserName;
+        }
+
         private void UpdateNavLine(int height, int top, int left)
         {
             PnlNav.Height = height;
@@ -132,6 +154,7 @@ namespace BudgetBud.Pages
             expenseBtn.BackColor = Color.FromArgb(24, 30, 54);
             historyBtn.BackColor = Color.FromArgb(24, 30, 54);
             analysisBtn.BackColor = Color.FromArgb(24, 30, 54);
+            profileBtn.BackColor = Color.FromArgb(24, 30, 54); 
             logoutBtn.BackColor = Color.FromArgb(24, 30, 54);
         }
 
@@ -266,6 +289,7 @@ namespace BudgetBud.Pages
             // Reset UserContext properties
             UserContext.IsLoggedIn = false;
             UserContext.SessionUserId = 0;
+            UserContext.ProfilePic = null;
 
             ResetButtonColors();
 
@@ -275,6 +299,22 @@ namespace BudgetBud.Pages
             this.Hide();
             Login loginPage = new Login();
             loginPage.Show();
+        }
+
+        private void profileBtn_Click(object sender, EventArgs e)
+        {
+            if (!CheckSessionValidity())
+            {
+                return;
+            }
+
+            ResetButtonColors();
+
+            UpdateNavLine(profileBtn.Height, profileBtn.Top, profileBtn.Left);
+            profileBtn.BackColor = Color.FromArgb(46, 51, 73);
+
+            Profile profilePage = new Profile(this);
+            ChangeMenu(profilePage);
         }
 
         #endregion

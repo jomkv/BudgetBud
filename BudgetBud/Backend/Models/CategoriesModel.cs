@@ -177,8 +177,8 @@ namespace BudgetBud.Backend.Models
                         {
                             // Edit Category name
                             string categoryQuery = $@"UPDATE `categoriestbl`
-                                              SET `category_name` = '{newName}'
-                                              WHERE `categoryId` = {id};";
+                                                      SET `category_name` = '{newName}'
+                                                      WHERE `categoryId` = {id};";
 
                             using (var command = new MySqlCommand(categoryQuery, connection))
                             {
@@ -187,8 +187,8 @@ namespace BudgetBud.Backend.Models
 
                             // Update expenses that uses that category
                             string expensesQUery = $@"UPDATE `expensestbl`
-                                                  SET `category` = '{newName}'
-                                                  WHERE `categoryId` = {id}";
+                                                      SET `category` = '{newName}'
+                                                      WHERE `categoryId` = {id}";
 
                             using (var command = new MySqlCommand(expensesQUery, connection))
                             {

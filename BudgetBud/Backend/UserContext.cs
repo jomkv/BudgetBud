@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,5 +14,6 @@ namespace BudgetBud.Backend
         public static string UserName { get; set; } = "Username";
         public static string Status { get; set; } = "Status";
         public static string FullName { get; set; } = "Full Name";
+        public static Image ProfilePic { get; set; } = null;
     }
 }

@@ -16,6 +16,7 @@ namespace BudgetBud.Pages.Menus
     public partial class History : UserControl
     {
         HistoryModel model = new HistoryModel();
+        private List<int> categoryIds = new List<int>();
         private Main main { get; set; }
 
         public History()
@@ -68,6 +69,23 @@ namespace BudgetBud.Pages.Menus
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 
             #endregion
+
+            if(model.categories.Count > 0 )
+            {
+                categoryDropdown.Items.Add("None");
+                categoryIds.Add(0);
+
+                for(int i = 0; i < model.categories.Count; i++)
+                {
+                    categoryDropdown.Items.Add(model.categories[i].Value);
+                    categoryIds.Add(model.categories[i].Key);
+                }
+            }
+        }
+
+        private void UpdateDataGrid()
+        {
+            dataGridView1.DataSource = model.expenseTable;
         }
 
         // Table button onClick
@@ -113,6 +131,29 @@ namespace BudgetBud.Pages.Menus
                     }
                 }
             }
+        }
+
+        // Categories filter
+        private void applyFilterBtn_Click(object sender, EventArgs e)
+        {
+            if(categoryDropdown.SelectedIndex == 0)
+            {
+                model.CategoryId = null;
+            }
+            else
+            {
+                model.CategoryId = categoryIds[categoryDropdown.SelectedIndex];
+            }
+
+            model.FetchTable();
+            UpdateDataGrid();
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            model.ExpenseTitle = searchText.Text;
+            model.FetchTable();
+            UpdateDataGrid();
         }
     }
 }

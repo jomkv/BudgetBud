@@ -95,6 +95,7 @@ namespace BudgetBud.Backend.Models
 
                         // list of expense categories
                         categories = new List<KeyValuePair<int, string>>();
+                        expenseMeters2 = new List<ExpenseMeter>();
 
                         while (reader.Read())
                         {

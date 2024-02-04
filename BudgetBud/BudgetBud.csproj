@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SixLabors.ImageSharp.3.1.2\build\SixLabors.ImageSharp.props" Condition="Exists('..\packages\SixLabors.ImageSharp.3.1.2\build\SixLabors.ImageSharp.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -100,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backend\Db\DbConnection.cs" />
+    <Compile Include="Backend\Models\ProfileModel.cs" />
     <Compile Include="Backend\Models\AnalysisModel.cs" />
     <Compile Include="Backend\Models\HistoryModel.cs" />
     <Compile Include="Backend\Models\BudgetModel.cs" />
@@ -132,6 +136,18 @@
     <Compile Include="Components\CategoryProgressBar.Designer.cs">
       <DependentUpon>CategoryProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\ChangeUserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ChangeUserDetails.Designer.cs">
+      <DependentUpon>ChangeUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ChangeUserPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\ChangeUserPassword.Designer.cs">
+      <DependentUpon>ChangeUserPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CreateCategoryModal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +177,12 @@
     </Compile>
     <Compile Include="Pages\Menus\Home2.Designer.cs">
       <DependentUpon>Home2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Menus\Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Menus\Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.cs">
       <SubType>Form</SubType>
@@ -224,6 +246,12 @@
     <EmbeddedResource Include="Components\CategoryProgressBar.resx">
       <DependentUpon>CategoryProgressBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\ChangeUserDetails.resx">
+      <DependentUpon>ChangeUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\ChangeUserPassword.resx">
+      <DependentUpon>ChangeUserPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\CreateCategoryModal.resx">
       <DependentUpon>CreateCategoryModal.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Menus\Home2.resx">
       <DependentUpon>Home2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Menus\Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -368,5 +399,20 @@
   <ItemGroup>
     <None Include="Resources\speedometer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile-user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data-analytics.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SixLabors.ImageSharp.3.1.2\build\SixLabors.ImageSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SixLabors.ImageSharp.3.1.2\build\SixLabors.ImageSharp.props'))" />
+  </Target>
 </Project>

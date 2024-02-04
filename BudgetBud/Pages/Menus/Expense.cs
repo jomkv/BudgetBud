@@ -26,17 +26,13 @@ namespace BudgetBud.Pages.Menus
             // Initialize some form inputs
             categoryDropdown.SelectedIndex = 0;
             amountText.Text = "0";
-
-            // limit date time picker to current month only
-            dateTimePicker.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            dateTimePicker.MaxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
         }
 
         #region Helper Functions
 
         private void LoadData()
         {
-            model.FetchCategories();
+            model.GetData();
 
             // Populate categories dropdown
             if (model.categories.Count > 0)
@@ -51,9 +47,10 @@ namespace BudgetBud.Pages.Menus
                 }
             }
 
-            // Populate expense meters
+            // Reset meters container
+            metersContainer.Controls.Clear();
 
-            // Reverse traverse
+            // Reverse traverse expense meters
             for(int i = model.expenseMeters2.Count - 1; i >= 0; i--)
             {
                 ExpenseMeter meter = model.expenseMeters2[i];
@@ -131,6 +128,7 @@ namespace BudgetBud.Pages.Menus
 
             clearInputs();
 
+            LoadData();
         }
     }
 }

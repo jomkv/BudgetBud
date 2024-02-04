@@ -128,6 +128,12 @@ namespace BudgetBud
                 return;
             }
 
+            if(fullName.Length > 50)
+            {
+                errorText.Text = "Fullname must not exceed 50 characters";
+                return;
+            }
+
             #endregion
 
             registerBtn.Enabled = false;
