@@ -132,47 +132,49 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 56);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(783, 148);
+            this.pictureBox1.Size = new System.Drawing.Size(783, 114);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label1.Location = new System.Drawing.Point(-4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 25);
+            this.label1.Size = new System.Drawing.Size(108, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Full Name";
             // 
             // fullnameText
             // 
             this.fullnameText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.fullnameText.Location = new System.Drawing.Point(0, 28);
+            this.fullnameText.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.fullnameText.Location = new System.Drawing.Point(0, 27);
             this.fullnameText.Name = "fullnameText";
-            this.fullnameText.Size = new System.Drawing.Size(202, 20);
+            this.fullnameText.Size = new System.Drawing.Size(202, 33);
             this.fullnameText.TabIndex = 3;
             // 
             // usernameText
             // 
             this.usernameText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.usernameText.Location = new System.Drawing.Point(0, 28);
+            this.usernameText.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.usernameText.Location = new System.Drawing.Point(0, 27);
             this.usernameText.Name = "usernameText";
-            this.usernameText.Size = new System.Drawing.Size(202, 20);
+            this.usernameText.Size = new System.Drawing.Size(202, 33);
             this.usernameText.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label2.Location = new System.Drawing.Point(-4, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 25);
+            this.label2.Size = new System.Drawing.Size(106, 28);
             this.label2.TabIndex = 4;
             this.label2.Text = "Username";
             // 
@@ -237,14 +239,14 @@
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(281, 209);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(281, 172);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(208, 218);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(208, 266);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel6
@@ -252,29 +254,30 @@
             this.panel6.Controls.Add(this.confirmText);
             this.panel6.Controls.Add(this.label6);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 165);
+            this.panel6.Location = new System.Drawing.Point(3, 201);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(202, 50);
+            this.panel6.Size = new System.Drawing.Size(202, 62);
             this.panel6.TabIndex = 3;
             // 
             // confirmText
             // 
             this.confirmText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.confirmText.Location = new System.Drawing.Point(0, 30);
+            this.confirmText.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.confirmText.Location = new System.Drawing.Point(0, 29);
             this.confirmText.Name = "confirmText";
-            this.confirmText.Size = new System.Drawing.Size(202, 20);
+            this.confirmText.Size = new System.Drawing.Size(202, 33);
             this.confirmText.TabIndex = 7;
             this.confirmText.UseSystemPasswordChar = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label6.Location = new System.Drawing.Point(-4, 0);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(174, 25);
+            this.label6.Size = new System.Drawing.Size(182, 28);
             this.label6.TabIndex = 6;
             this.label6.Text = "Confirm Password";
             // 
@@ -283,29 +286,30 @@
             this.panel5.Controls.Add(this.passwordText);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 111);
+            this.panel5.Location = new System.Drawing.Point(3, 135);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(202, 48);
+            this.panel5.Size = new System.Drawing.Size(202, 60);
             this.panel5.TabIndex = 2;
             // 
             // passwordText
             // 
             this.passwordText.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.passwordText.Location = new System.Drawing.Point(0, 28);
+            this.passwordText.Font = new System.Drawing.Font("Nirmala UI", 14.25F);
+            this.passwordText.Location = new System.Drawing.Point(0, 27);
             this.passwordText.Name = "passwordText";
-            this.passwordText.Size = new System.Drawing.Size(202, 20);
+            this.passwordText.Size = new System.Drawing.Size(202, 33);
             this.passwordText.TabIndex = 7;
             this.passwordText.UseSystemPasswordChar = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label5.Location = new System.Drawing.Point(-4, 0);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 25);
+            this.label5.Size = new System.Drawing.Size(100, 28);
             this.label5.TabIndex = 6;
             this.label5.Text = "Password";
             // 
@@ -314,9 +318,9 @@
             this.panel4.Controls.Add(this.usernameText);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 57);
+            this.panel4.Location = new System.Drawing.Point(3, 69);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(202, 48);
+            this.panel4.Size = new System.Drawing.Size(202, 60);
             this.panel4.TabIndex = 1;
             // 
             // panel3
@@ -326,7 +330,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(202, 48);
+            this.panel3.Size = new System.Drawing.Size(202, 60);
             this.panel3.TabIndex = 0;
             // 
             // errorText

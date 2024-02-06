@@ -108,6 +108,44 @@ namespace BudgetBud.Backend.Models
 
         #endregion
 
+        public bool IsCategoryNameTaken(string categoryName)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    string expenseQuery = $@"SELECT COUNT(*) FROM `categoriestbl`
+                                             WHERE `userId` = {UserContext.SessionUserId}
+                                             AND `category_name` = '{categoryName}'";
+
+                    using (var command = new MySqlCommand(expenseQuery, connection))
+                    {
+                        var res = command.ExecuteScalar();
+
+                        if(res != DBNull.Value && res != null)
+                        {
+                            int count = Convert.ToInt32(res);
+
+                            if(count == 0)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"Error: {e.Message}");
+            }
+
+            return true;
+        }
+
         #region Actions
 
         public void DeleteCategory(int id)
@@ -220,6 +258,8 @@ namespace BudgetBud.Backend.Models
                 using (var connection = GetConnection())
                 {
                     connection.Open();
+
+                    // check first if category name already taken
 
                     string categoryQuery = $@"INSERT INTO `categoriestbl` (`category_name`, `budget_percent`, `budget_amount`, `userId`) 
                                               VALUES ('{name}', 0, 0, '{UserContext.SessionUserId}');";

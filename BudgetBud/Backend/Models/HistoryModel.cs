@@ -93,6 +93,7 @@ namespace BudgetBud.Backend.Models
                         {
                             int categoryId = Convert.ToInt32(reader["categoryId"]);
                             string categoryName = reader["category_name"].ToString();
+                            Debug.WriteLine($"HERE {categoryName}");
                             // append to said list
                             categories.Add(new KeyValuePair<int, string>(categoryId, categoryName));
                         }

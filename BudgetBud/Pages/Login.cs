@@ -119,8 +119,6 @@ namespace BudgetBud
             }
             else
             {
-                usernameText.Text = "";
-                passwordText.Text = "";
                 errorText.Text = "Invalid Username and/or Password";
             }
 

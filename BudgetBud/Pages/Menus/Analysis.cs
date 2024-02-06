@@ -60,6 +60,7 @@ namespace BudgetBud.Pages.Menus
             }
 
             #region Style
+            doughnutSeries.IsValueShownAsLabel = true;
             doughnutSeries.LabelForeColor = Color.White;
             doughnutSeries.Font = new Font("Nirmala UI", 14.25f, FontStyle.Bold); 
             legend.Font = new Font("Nirmala UI", 11.25f, FontStyle.Bold);

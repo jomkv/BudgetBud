@@ -34,6 +34,7 @@ namespace BudgetBud.Pages.Menus
         {
             model.GetData();
 
+            categoryDropdown.Items.Clear();
             // Populate categories dropdown
             if (model.categories.Count > 0)
             {
@@ -60,6 +61,8 @@ namespace BudgetBud.Pages.Menus
                 progress.Dock = DockStyle.Top;
                 metersContainer.Controls.Add(progress);
             }
+
+            categoryDropdown.SelectedIndex = 0;
         }
 
         private void clearInputs()
@@ -97,9 +100,9 @@ namespace BudgetBud.Pages.Menus
                 return;
             }
 
-            if (price <= 0)
+            if (price < 1)
             {
-                errorText.Text = "Price must be greater than 0";
+                errorText.Text = "Price must be at least be 1";
                 return;
             }
 

@@ -13,6 +13,7 @@ using BudgetBud.Backend.Models;
 using BudgetBud.Components;
 using BudgetBud.Pages;
 using BudgetBud.Backend;
+using System.Drawing.Drawing2D;
 
 namespace BudgetBud.Pages.Menus
 {
@@ -82,6 +83,28 @@ namespace BudgetBud.Pages.Menus
             return fileInfo.Length <= maxSizeInBytes;
         }
 
+        public Bitmap CropToCircle(Bitmap source)
+        {
+            int diameter = Math.Min(source.Width, source.Height);
+            Bitmap result = new Bitmap(diameter, diameter);
+
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    path.AddEllipse(0, 0, diameter, diameter);
+                    g.SetClip(path);
+                    g.DrawImage(source, 0, 0, diameter, diameter);
+                }
+            }
+
+            return result;
+        }
+
         private void changeProfileBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -95,7 +118,9 @@ namespace BudgetBud.Pages.Menus
                     string filePath = ofd.FileName;
                     if(IsFileWithinSizeLimit(filePath) && model.SetPicture(filePath))
                     {
-                        pictureBox1.BackgroundImage = new Bitmap(ofd.FileName);
+                        Bitmap rawPic = new Bitmap(ofd.FileName);
+                        Bitmap croppedPic = CropToCircle(rawPic);
+                        pictureBox1.BackgroundImage = croppedPic;
                         errorText.Text = "";
                         parent.ShowProfilePic();
                     }

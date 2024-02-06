@@ -16,6 +16,7 @@ namespace BudgetBud.Components
     public partial class CreateCategoryModal : Form
     {
         CategoriesModel model = new CategoriesModel();
+        BudgetCategories parent;
         private Main main { get; set; }
 
         public CreateCategoryModal()
@@ -27,6 +28,12 @@ namespace BudgetBud.Components
         {
             InitializeComponent();
             this.main = main;
+        }
+
+        public CreateCategoryModal(BudgetCategories parent)
+        {
+            InitializeComponent();
+            this.parent = parent;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -46,10 +53,10 @@ namespace BudgetBud.Components
                 errorText.Text = "Category name cannot be empty";
                 return;
             }
-            else if (name.Length < 5 || name.Length > 20)
+            else if (name.Length < 4 || name.Length > 20)
             {
                 // ERROR: NAME TOO LONG
-                errorText.Text = "Category name must be 5-20 characters";
+                errorText.Text = "Category name must be 4-20 characters";
                 return;
             }
 
@@ -57,7 +64,7 @@ namespace BudgetBud.Components
 
             model.CreateCategory(this.nameText.Text);
             this.Close();
-            main.ChangeMenu(new Categories(this.main));
+            parent.RefreshData();
         }
     }
 }

@@ -172,6 +172,12 @@
     <Compile Include="Pages\Menus\Analysis.Designer.cs">
       <DependentUpon>Analysis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Menus\BudgetCategories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Menus\BudgetCategories.Designer.cs">
+      <DependentUpon>BudgetCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Menus\Home2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Menus\Analysis.resx">
       <DependentUpon>Analysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Menus\BudgetCategories.resx">
+      <DependentUpon>BudgetCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Menus\Home2.resx">
       <DependentUpon>Home2.cs</DependentUpon>

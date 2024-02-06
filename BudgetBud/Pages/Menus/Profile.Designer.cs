@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.formContainer = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.changeProfileBtn = new System.Windows.Forms.Button();
             this.errorText = new System.Windows.Forms.Label();
-            this.formContainer = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -56,6 +56,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1046, 705);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // formContainer
+            // 
+            this.formContainer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.formContainer.Location = new System.Drawing.Point(575, 86);
+            this.formContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.formContainer.Name = "formContainer";
+            this.formContainer.Size = new System.Drawing.Size(418, 532);
+            this.formContainer.TabIndex = 6;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -64,12 +73,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(82, 195);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(37, 132);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.44379F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.55621F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(359, 314);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(448, 441);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -79,7 +88,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Controls.Add(this.changeProfileBtn, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.errorText, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(53, 236);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(98, 332);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0, 0, 0, 15);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
@@ -117,23 +126,14 @@
             this.errorText.TabIndex = 12;
             this.errorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // formContainer
-            // 
-            this.formContainer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.formContainer.Location = new System.Drawing.Point(575, 86);
-            this.formContainer.Margin = new System.Windows.Forms.Padding(0);
-            this.formContainer.Name = "formContainer";
-            this.formContainer.Size = new System.Drawing.Size(418, 532);
-            this.formContainer.TabIndex = 6;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.BackgroundImage = global::BudgetBud.Properties.Resources.user_icon;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 64);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(353, 224);
+            this.pictureBox1.Size = new System.Drawing.Size(401, 265);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 

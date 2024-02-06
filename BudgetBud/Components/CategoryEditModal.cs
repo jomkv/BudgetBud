@@ -18,6 +18,7 @@ namespace BudgetBud.Components
     {
         CategoriesModel model = new CategoriesModel();
         private Categories parent { get; set; }
+        private BudgetCategories parent2;
 
         private int categoryId { get; set; }
         public CategoryEditModal()
@@ -31,6 +32,14 @@ namespace BudgetBud.Components
             this.nameText.Text = name;
             this.categoryId = id;
             this.parent = parent;
+        }
+
+        public CategoryEditModal(BudgetCategories parent, string name, int id)
+        {
+            InitializeComponent();
+            this.nameText.Text = name;
+            this.categoryId = id;
+            this.parent2 = parent;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,10 +64,18 @@ namespace BudgetBud.Components
                 errorText.Text = "Category name cannot be empty";
                 return;
             }
-            else if (name.Length < 5 || name.Length > 20)
+
+            if (name.Length < 4 || name.Length > 20)
             {
                 // ERROR: NAME TOO LONG
-                errorText.Text = "Category name must be 5-20 characters";
+                errorText.Text = "Category name must be 4-20 characters";
+                return;
+            }
+
+            if (model.IsCategoryNameTaken(name))
+            {
+                // ERROR: NAME TAKEN
+                errorText.Text = "Category already exists";
                 return;
             }
 
@@ -66,7 +83,7 @@ namespace BudgetBud.Components
 
             model.EditCategory(this.categoryId, this.nameText.Text);
             this.Close();
-            parent.GetData();
+            parent2.RefreshData();
         }
 
         private void closeBtn_Click(Object sender, EventArgs e)

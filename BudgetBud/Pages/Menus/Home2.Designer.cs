@@ -165,7 +165,7 @@
             // 
             this.availableText.AutoSize = true;
             this.availableText.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availableText.ForeColor = System.Drawing.Color.Gainsboro;
+            this.availableText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.availableText.Location = new System.Drawing.Point(0, 28);
             this.availableText.Margin = new System.Windows.Forms.Padding(0);
             this.availableText.Name = "availableText";
@@ -230,7 +230,7 @@
             this.spentText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.spentText.AutoSize = true;
             this.spentText.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spentText.ForeColor = System.Drawing.Color.Gainsboro;
+            this.spentText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.spentText.Location = new System.Drawing.Point(157, 28);
             this.spentText.Margin = new System.Windows.Forms.Padding(0);
             this.spentText.Name = "spentText";
@@ -419,6 +419,7 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold);
+            series1.IsValueShownAsLabel = true;
             series1.LabelForeColor = System.Drawing.Color.White;
             series1.Legend = "Legend1";
             series1.Name = "Series1";

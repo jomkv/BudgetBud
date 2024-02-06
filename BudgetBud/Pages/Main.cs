@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBud.Pages.Menus;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace BudgetBud.Pages
 {
@@ -43,7 +44,6 @@ namespace BudgetBud.Pages
 
             // Initialize Username and Status
             this.usernameText.Text = UserContext.UserName;
-            this.statusText.Text = UserContext.Status;
 
             ShowProfilePic();
 
@@ -150,7 +150,6 @@ namespace BudgetBud.Pages
         {
             homeBtn.BackColor = Color.FromArgb(24, 30, 54);
             budgetBtn.BackColor = Color.FromArgb(24, 30, 54);
-            categoriesBtn.BackColor = Color.FromArgb(24, 30, 54);
             expenseBtn.BackColor = Color.FromArgb(24, 30, 54);
             historyBtn.BackColor = Color.FromArgb(24, 30, 54);
             analysisBtn.BackColor = Color.FromArgb(24, 30, 54);
@@ -204,38 +203,6 @@ namespace BudgetBud.Pages
             ChangeMenu(homePage);
         }
 
-        private void budgetBtn_Click(object sender, EventArgs e)
-        {
-            if (!CheckSessionValidity())
-            {
-                return;
-            }
-
-            ResetButtonColors();
-
-            UpdateNavLine(budgetBtn.Height, budgetBtn.Top, budgetBtn.Left);
-            budgetBtn.BackColor = Color.FromArgb(46, 51, 73);
-
-            Budget budgetPage = new Budget();
-            ChangeMenu(budgetPage);
-        }
-
-        private void categoriesBtn_Click(object sender, EventArgs e)
-        {
-            if (!CheckSessionValidity())
-            {
-                return;
-            }
-
-            ResetButtonColors();
-
-            UpdateNavLine(categoriesBtn.Height, categoriesBtn.Top, categoriesBtn.Left);
-            categoriesBtn.BackColor = Color.FromArgb(46, 51, 73);
-
-            Categories categoriesPage = new Categories(this);
-            ChangeMenu(categoriesPage);
-        }
-
         private void expenseBtn_Click(object sender, EventArgs e)
         {
             if (!CheckSessionValidity())
@@ -286,6 +253,13 @@ namespace BudgetBud.Pages
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Are you sure you want to logout?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr != DialogResult.Yes)
+            {
+                return;
+            }
+
             // Reset UserContext properties
             UserContext.IsLoggedIn = false;
             UserContext.SessionUserId = 0;
@@ -318,5 +292,21 @@ namespace BudgetBud.Pages
         }
 
         #endregion
+
+        private void budgetCategoriesBtn_Click(object sender, EventArgs e)
+        {
+            if (!CheckSessionValidity())
+            {
+                return;
+            }
+
+            ResetButtonColors();
+
+            UpdateNavLine(budgetBtn.Height, budgetBtn.Top, budgetBtn.Left);
+            budgetBtn.BackColor = Color.FromArgb(46, 51, 73);
+
+            BudgetCategories budgetPage = new BudgetCategories(this);
+            ChangeMenu(budgetPage);
+        }
     }
 }

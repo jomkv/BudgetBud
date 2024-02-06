@@ -17,6 +17,7 @@ namespace BudgetBud.Components
     {
         CategoriesModel model = new CategoriesModel();
         public Categories parent { get; set; }
+        public BudgetCategories parent2 { get; set; }
 
         #region Properties
 
@@ -41,6 +42,17 @@ namespace BudgetBud.Components
             this.id = id;
             this.allowDelete = allowDelete;
         }
+
+        public CustomizeCategory(BudgetCategories parent, int id, string name, bool allowDelete)
+        {
+            InitializeComponent();
+            this.parent2 = parent;
+            this.nameText.Text = name;
+            this.name = name;
+            this.id = id;
+            this.allowDelete = allowDelete;
+        }
+
         #endregion
 
         #region Actions
@@ -57,13 +69,13 @@ namespace BudgetBud.Components
             if(dr == DialogResult.Yes)
             {
                 model.DeleteCategory(this.id);
-                parent.GetData();
+                parent2.RefreshData();
             }
         }
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-            using (CategoryEditModal modal = new CategoryEditModal(this.parent, this.name, this.id))
+            using (CategoryEditModal modal = new CategoryEditModal(this.parent2, this.name, this.id))
             {
                 modal.ShowDialog();
             }

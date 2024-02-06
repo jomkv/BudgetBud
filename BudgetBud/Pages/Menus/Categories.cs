@@ -66,10 +66,10 @@ namespace BudgetBud.Pages.Menus
 
         private void createCategoryBtn_Click(object sender, EventArgs e)
         {
-            using (CreateCategoryModal modal = new CreateCategoryModal(this.main))
-            {
-                modal.ShowDialog();
-            }
+            //using (CreateCategoryModal modal = new CreateCategoryModal(this.main))
+            //{
+                //modal.ShowDialog();
+            //}
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -90,10 +90,16 @@ namespace BudgetBud.Pages.Menus
                 errorText.Text = "Category name cannot be empty";
                 return;
             }
-            else if (name.Length < 5 || name.Length > 20)
+
+            if (name.Length < 4 || name.Length > 20)
             {
-                // ERROR: NAME TOO LONG
-                errorText.Text = "Category name must be 5-20 characters";
+                errorText.Text = "Category name must be 4-20 characters";
+                return;
+            }
+
+            if(model.IsCategoryNameTaken(name))
+            {
+                errorText.Text = "Category already exists";
                 return;
             }
 

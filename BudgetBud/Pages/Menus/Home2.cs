@@ -30,7 +30,6 @@ namespace BudgetBud.Pages.Menus
 
             this.spentText.Text = $"₱ {model.spent}";
             this.availableText.Text = $"₱ {model.available}";
-            Debug.WriteLine($"avao;ab;e: {model.available}");
             this.expenseCountText.Text = model.expenseCountToday.ToString();
             this.totalSpentText.Text = $"₱ {model.totalSpentToday}";
             this.fullNameText.Text = $"Hello, {UserContext.FullName}";
@@ -45,6 +44,8 @@ namespace BudgetBud.Pages.Menus
 
                     // Access the DataPoint using the index
                     DataPoint dataPoint = doughnutChart.Series[0].Points[index];
+                    dataPoint.Label = dataPoint.YValues[0].ToString("#,##0.##") + "%";
+                    dataPoint.LegendText = categoryBudget.Name;
 
                     // Check if the category is "Unallocated"
                     if (categoryBudget.Name.Equals("Unallocated", StringComparison.OrdinalIgnoreCase))

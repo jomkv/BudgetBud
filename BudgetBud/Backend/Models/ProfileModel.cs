@@ -10,6 +10,8 @@ using MySqlX.XDevAPI;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace BudgetBud.Backend.Models
 {
@@ -59,6 +61,39 @@ namespace BudgetBud.Backend.Models
             FetchImage();
         }
 
+        public byte[] CropImageToCircle(byte[] imageData)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(imageData))
+            {
+                using (Bitmap sourceBitmap = new Bitmap(memoryStream))
+                {
+                    int diameter = Math.Min(sourceBitmap.Width, sourceBitmap.Height);
+                    Bitmap resultBitmap = new Bitmap(diameter, diameter);
+
+                    using (Graphics g = Graphics.FromImage(resultBitmap))
+                    {
+                        g.SmoothingMode = SmoothingMode.AntiAlias;
+                        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                        using (GraphicsPath path = new GraphicsPath())
+                        {
+                            path.AddEllipse(0, 0, diameter, diameter);
+                            g.SetClip(path);
+                            g.DrawImage(sourceBitmap, 0, 0, diameter, diameter);
+                        }
+                    }
+
+                    // Convert the resultBitmap back to a byte array
+                    using (MemoryStream resultStream = new MemoryStream())
+                    {
+                        resultBitmap.Save(resultStream, System.Drawing.Imaging.ImageFormat.Png);
+                        return resultStream.ToArray();
+                    }
+                }
+            }
+        }
+
         #region Actions
 
         public bool SetPicture(string imagePath)
@@ -73,6 +108,8 @@ namespace BudgetBud.Backend.Models
                     imageData = new byte[fs.Length];
                     fs.Read(imageData, 0, (int)fs.Length);
                 }
+
+                imageData = CropImageToCircle(imageData);
 
                 using (var connection = GetConnection())
                 {
@@ -210,9 +247,8 @@ namespace BudgetBud.Backend.Models
                 {
                     connection.Open();
 
-                    // Retrieve hashed password from the database
                     string userQuery = $@"UPDATE userstbl 
-                                          SET `password` = {newPass}
+                                          SET `password` = '{newPass}'
                                           WHERE `id` = {UserContext.SessionUserId};";
 
                     using (var command = new MySqlCommand(userQuery, connection))

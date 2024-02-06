@@ -62,9 +62,9 @@ namespace BudgetBud.Components
                 return;
             }
 
-            if (!(newPass.Length >= 8) || !(newPass.Length <= 20))
+            if (!(newPass.Length >= 5) || !(newPass.Length <= 20))
             {
-                errorText.Text = "New Password must be 8-20 characters";
+                errorText.Text = "New Password must be 5-20 characters";
                 return;
             }
 

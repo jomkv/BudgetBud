@@ -1,31 +1,77 @@
-﻿using BudgetBud.Backend.Models;
-using BudgetBud.Components;
+﻿using BudgetBud.Components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BudgetBud.Backend.Models;
+using System.Diagnostics;
 
 namespace BudgetBud.Pages.Menus
 {
-    public partial class Budget : UserControl
+    public partial class BudgetCategories : UserControl
     {
+        private Main main { get; set; }
         BudgetModel model = new BudgetModel();
+        CategoriesModel categoriesModel = new CategoriesModel();
 
-        public Budget()
+        public BudgetCategories()
         {
             InitializeComponent();
             GetData();
-            percentRadio.Checked = true;
-            UpdateFormState();
         }
 
-        #region Get Data from Database
+        public BudgetCategories(Main main)
+        {
+            InitializeComponent();
+            RefreshData();
+            this.main = main;
+        }
+
+        public void RefreshData()
+        {
+            GetData();
+            GetData2();
+        }
+
+        public void GetData2()
+        {
+            categoriesModel.GetData();
+
+            bool allowDelete = (categoriesModel.categoryCount <= 3) ? false : true;
+
+            if (categoriesModel.categories != null)
+            {
+                categoriesPanel.Controls.Clear();
+
+                for (int i = model.categories.Count - 1; i >= 0; i--)
+                {
+                    KeyValuePair<int, string> category = categoriesModel.categories[i];
+
+                    int id = category.Key;
+                    string name = category.Value;
+
+                    CustomizeCategory customizeCategory = new CustomizeCategory(this, id, name, allowDelete);
+                    customizeCategory.Dock = DockStyle.Top;
+
+                    categoriesPanel.Controls.Add(customizeCategory);
+                }
+            }
+
+            if (categoriesModel.categoryCount >= 8)
+            {
+                saveBtn.Enabled = false;
+            }
+            else
+            {
+                saveBtn.Enabled = true;
+            }
+        }
+
         public void GetData()
         {
             model.GetData();
@@ -37,7 +83,6 @@ namespace BudgetBud.Pages.Menus
 
             if (model.categories.Count > 0)
             {
-                percentContainer.Controls.Clear();
                 exactContainer.Controls.Clear();
 
                 // Reverse traverse the array of categories
@@ -46,20 +91,16 @@ namespace BudgetBud.Pages.Menus
                     // get category data
                     int id = model.categories[i].Id;
                     string name = model.categories[i].Name;
-                    decimal budgetPercent = model.categories[i].BudgetPercent;
                     decimal budgetAmount = model.categories[i].BudgetValue;
 
-                    BudgetInputPercent inputPercent = new BudgetInputPercent(id, name, budgetPercent);
                     BudgetInputValue inputValue = new BudgetInputValue(id, name, budgetAmount);
 
-                    inputPercent.Dock = DockStyle.Top;
                     inputValue.Dock = DockStyle.Top;
-                    percentContainer.Controls.Add(inputPercent);
                     exactContainer.Controls.Add(inputValue);
                 }
 
             }
-            else 
+            else
             {
                 // TODO
             }
@@ -77,33 +118,9 @@ namespace BudgetBud.Pages.Menus
             }
         }
 
-        public void UpdateFormState()
-        {
-            foreach (Control control in percentContainer.Controls)
-            {
-                if (control is BudgetInputPercent inputPercent)
-                {
-                    inputPercent.enable = percentRadio.Checked;
-                }
-            }
-            foreach (Control control in exactContainer.Controls)
-            {
-                if (control is BudgetInputValue inputValue)
-                {
-                    inputValue.enable = valueRadio.Checked;
-                }
-            }
-        }
+        #region Budget Actions
 
-        #endregion
-
-        private void BudgetPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        #region Save 
-        private void SaveBudget()
+        private void SaveBudget(object sender, EventArgs e)
         {
             try
             {
@@ -138,54 +155,11 @@ namespace BudgetBud.Pages.Menus
 
                 #region Iterate through Input User Controls 
 
-                if(percentRadio.Checked)
-                {
-                    #region Percent 
-
-                    foreach (Control control in percentContainer.Controls)
-                    {
-                        if (control is BudgetInputPercent budgetInputPercent)
-                        {
-                            decimal budgetPercent;
-                            bool response = decimal.TryParse(budgetInputPercent.input, out budgetPercent);
-
-                            #region Category Input Validation
-                            if (!response)
-                            {
-                                errorText.Text = "Invalid category budget input";
-                                return;
-                            }
-                            else if (budgetPercent < 0)
-                            {
-                                errorText.Text = "Category Budget cannot be negative";
-                                return;
-                            }
-                            #endregion
-
-                            // Convert percent to literal amount
-                            decimal budgetAmount = Math.Round(budgetPercent * (budget / 100m), 2);
-
-                            categoryBudgets.Add(new CategoryBudget<int, decimal, decimal>(budgetInputPercent.categoryId, budgetPercent, budgetAmount));
-
-                            total += budgetPercent;
-                        }
-                    }
-
-                    if(total > 100)
-                    {
-                        errorText.Text = "Total Percent must not exceed 100";
-                        return;
-                    }
-
-                    #endregion
-                }
-                else if (valueRadio.Checked)
-                {
                     #region Exact Value
 
                     foreach (Control control in exactContainer.Controls)
                     {
-                        if(control is BudgetInputValue budgetInputValue)
+                        if (control is BudgetInputValue budgetInputValue)
                         {
                             decimal budgetAmount;
                             bool response = decimal.TryParse(budgetInputValue.input, out budgetAmount);
@@ -219,7 +193,7 @@ namespace BudgetBud.Pages.Menus
                     }
 
                     #endregion
-                }
+                
 
                 #endregion
 
@@ -227,7 +201,6 @@ namespace BudgetBud.Pages.Menus
                 model.SaveBudget(categoryBudgets, budget);
                 MessageBox.Show("Budget Saved");
                 GetData();
-                UpdateFormState();
             }
             catch (Exception ex)
             {
@@ -240,17 +213,14 @@ namespace BudgetBud.Pages.Menus
         }
 
         #endregion
-        
-        #region Save 
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            SaveBudget();
-        }
-        #endregion
 
-        private void HandleRadioChange(object sender, EventArgs e)
+        // Add category
+        private void button1_Click(object sender, EventArgs e)
         {
-            UpdateFormState();
+            using (CreateCategoryModal modal = new CreateCategoryModal(this))
+            {
+                modal.ShowDialog();
+            }
         }
     }
 }

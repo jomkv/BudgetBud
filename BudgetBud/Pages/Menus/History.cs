@@ -15,9 +15,14 @@ namespace BudgetBud.Pages.Menus
 {
     public partial class History : UserControl
     {
+        #region Properties
+
         HistoryModel model = new HistoryModel();
         private List<int> categoryIds = new List<int>();
+        private bool IsPlaceholder = true;
         private Main main { get; set; }
+
+        #endregion
 
         public History()
         {
@@ -28,9 +33,41 @@ namespace BudgetBud.Pages.Menus
         public History(Main main)
         {
             InitializeComponent();
+
             GetData();
-            this.main = main;
+            categoryDropdown.SelectedIndex = 0;
+
+            this.main = main; // whats this??
+
+            // Textbox Placeholders
+            searchText.Text = "Search by title here...";
+            searchText.GotFocus += RemoveText;
+            searchText.LostFocus += AddText;
         }
+
+        #region Text placeholder stuff
+
+        public void RemoveText(object sender, EventArgs e)
+        {
+            if (searchText.Text == "Search by title here...")
+            {
+                searchText.Text = "";
+                searchText.ForeColor = Color.Black;
+                this.IsPlaceholder = false;
+            }
+        }
+
+        public void AddText(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchText.Text))
+            {
+                searchText.Text = "Search by title here...";
+                searchText.ForeColor = Color.Gray;
+                this.IsPlaceholder = true;
+            }
+        }
+
+        #endregion
 
         public void GetData()
         {
@@ -38,14 +75,34 @@ namespace BudgetBud.Pages.Menus
 
             #region Initialize history table
 
-            if(model.expenseTable.Rows.Count == 0)
+            // Populate category filter dropdown
+            if (model.categories.Count > 0)
             {
-                //filterBtn.Enabled = false;
+                categoryDropdown.Items.Add("None");
+                categoryIds.Add(0);
+
+                for (int i = 0; i < model.categories.Count; i++)
+                {
+                    categoryDropdown.Items.Add(model.categories[i].Value);
+                    categoryIds.Add(model.categories[i].Key);
+                }
+            }
+
+
+            // Determine if filters are enabled
+            if (model.expenseTable.Rows.Count == 0)
+            {
+                applyFilterBtn.Enabled = false;
                 searchBtn.Enabled = false;
                 return;
             }
 
             dataGridView1.DataSource = model.expenseTable;
+
+            // Set the height of each row
+            dataGridView1.RowTemplate.Height = 50;
+
+            #region Datagrid Edit and Delete Buttons
 
             // Customize column widths
             dataGridView1.AutoGenerateColumns = true;
@@ -70,25 +127,19 @@ namespace BudgetBud.Pages.Menus
 
             #endregion
 
-            if(model.categories.Count > 0 )
-            {
-                categoryDropdown.Items.Add("None");
-                categoryIds.Add(0);
-
-                for(int i = 0; i < model.categories.Count; i++)
-                {
-                    categoryDropdown.Items.Add(model.categories[i].Value);
-                    categoryIds.Add(model.categories[i].Key);
-                }
-            }
+            #endregion
         }
+
+        #region Helper
 
         private void UpdateDataGrid()
         {
             dataGridView1.DataSource = model.expenseTable;
         }
 
-        // Table button onClick
+        #endregion
+
+        #region Datagrid Button Onclicks
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -133,7 +184,9 @@ namespace BudgetBud.Pages.Menus
             }
         }
 
-        // Categories filter
+        #endregion
+
+        #region Filter Button Onclicks
         private void applyFilterBtn_Click(object sender, EventArgs e)
         {
             if(categoryDropdown.SelectedIndex == 0)
@@ -151,9 +204,11 @@ namespace BudgetBud.Pages.Menus
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            model.ExpenseTitle = searchText.Text;
+            model.ExpenseTitle = IsPlaceholder ? "" : searchText.Text;
             model.FetchTable();
             UpdateDataGrid();
         }
+
+        #endregion
     }
 }

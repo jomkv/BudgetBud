@@ -116,9 +116,9 @@ namespace BudgetBud
                 return;
             }
 
-            if (!(password.Length >= 8) || !(password.Length <= 20))
+            if (!(password.Length >= 5) || !(password.Length <= 20))
             {
-                errorText.Text = "Password must be 8-20 characters";
+                errorText.Text = "Password must be 5-20 characters";
                 return;
             }
 
